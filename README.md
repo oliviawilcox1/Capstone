@@ -15,7 +15,7 @@
 6. The reviews will be listed at the bottom of the page with the appropriate date attached and rating. 
 
 Technologies Used: React, Bootstrap, JavaScript, MongoDB, Mongoose, JavaScript, Postman, Express, BCrypt, Passport
-
+Models: Reviews, Restaurants, User
 MVP: Full CRUD, along with a Fully Functioning Review System 
 
 Stretch Goals: Recommended Restauarants Specific To Users. Adding in A Calendar for Vegan Events
@@ -31,4 +31,4 @@ WireFrames:
 
 ERDS
 
-![start](img/ERD.png)
+![start](img/Erd.png)
