@@ -54,7 +54,7 @@ const CreateReview = (props) => {
             review={review}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            heading="Write A Review for This Restaurant"
+            heading="Write Your Review"
         />
     )
 
