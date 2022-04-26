@@ -4,15 +4,29 @@ import { createReview } from "../../api/reviews";
 
 
 const CreateReview = (props) => {
-    const { user, restaurants, triggerRefresh} = props
-    const [review, setReview] = useState(null)
+    const { user, triggerRefresh, handleClose} = props
+    const [review, setReview] = useState({})
 
-    addUser()
+    const handleChange = (e) => {
 
+        e.persist()
 
+        addUser()
 
+        setReview(prevReview => {
+            const name = e.target.name
+            let value = e.target.value
 
+            if(e.target.type === 'number') {
+                value = parseInt(e.target.value)
+            }
 
+            const update = { [name]: value }
+            return {...prevReview, ...update}
+
+        })
+
+    }
     
 
     const addUser = () => {
@@ -20,6 +34,19 @@ const CreateReview = (props) => {
             const update = {'owner': user._id}
             return {...prevReview, ...update}
         })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault ()
+
+        createReview(user, review)
+            .then(() => handleClose())
+
+            .then(()=> triggerRefresh())
+
+            .catch(err => 
+                console.log(err)
+            )
     }
 
     return (

@@ -10,17 +10,18 @@ const ReviewForm = (props) => {
             <h1>{heading}</h1>
 
             <FormLabel>Rating: </FormLabel>
-            <Form.Control 
+            <FormControl 
                     placeholder="Pick from 1 through 5"
                     value={review.rating}
                     name='rating'
-                    // onChange={handleChange}
+                    onChange={handleChange}
             />
             <FormLabel>Write Your Review: </FormLabel>
-            <Form.Control
+            <FormControl
             placeholder="This was the most delicious meal I've had in ages! I am dreaming of coming back."
             value={review.review}
             name='review'
+            onChange={handleSubmit}
             />
 
 
@@ -29,6 +30,6 @@ const ReviewForm = (props) => {
 
 
     )
-
-
 }
+
+export default ReviewForm
