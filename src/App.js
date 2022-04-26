@@ -12,6 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import ShowRestaurant from './components/restaurants/ShowRestaurant'
 
 const App = () => {
 
@@ -53,32 +54,36 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-				</Routes>
-				{msgAlerts.map((msgAlert) => (
-					<AutoDismissAlert
-						key={msgAlert.id}
-						heading={msgAlert.heading}
-						variant={msgAlert.variant}
-						message={msgAlert.message}
-						id={msgAlert.id}
-						deleteAlert={deleteAlert}
+					<Route 
+						path="restaurants/:id"
+						element={<ShowRestaurant user ={user} />}
 					/>
-				))}
+					<Route
+						path='/sign-out'
+						element={
+						<RequireAuth user={user}>
+							<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+						</RequireAuth>
+						}
+					/>
+					<Route
+						path='/change-password'
+						element={
+						<RequireAuth user={user}>
+							<ChangePassword msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
+					</Routes>
+					{msgAlerts.map((msgAlert) => (
+						<AutoDismissAlert
+							key={msgAlert.id}
+							heading={msgAlert.heading}
+							variant={msgAlert.variant}
+							message={msgAlert.message}
+							id={msgAlert.id}
+							deleteAlert={deleteAlert}
+						/>
+					))}
 			</Fragment>
 		)
 }

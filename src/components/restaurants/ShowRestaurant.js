@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getOneRestaurant } from '../../api/restaurants'
 
 import { useParams, useNavigate} from 'react-router-dom'
@@ -32,35 +32,20 @@ const ShowRestaurant = (props) => {
 
     return (
         <>
-
-        <h1>{restaurant.name}</h1>
-        <img src={restaurant.image} alt=''/>
-        <p>Located at {restaurant.address}</p>
-        <p>{restaurant.visitors} visitors</p>
-        <p>{restaurant.cuisine}</p>
-        <p>{restaurant.rating}</p>
-        <div>
-            <h3>{restaurant.description}</h3>
-        </div>
-        <button>Add to your Future Eats</button>
-        <h3> Reviews </h3>
-        <button> Add a Review </button>
+            <h1>{restaurant.name}</h1>
+            <img src={`${restaurant.image}`} alt=''/>
+            <p>Located at {restaurant.address}</p>
+            <p>{restaurant.visitors} visitors</p>
+            <p>{restaurant.cuisine}</p>
+            <p>{restaurant.rating}</p>
+            <div>
+                <h3>{restaurant.description}</h3>
+            </div>
+            <button>Add to your Future Eats</button>
+            <h3> Reviews </h3>
+            <button> Add a Review </button>
         </>
     )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+export default ShowRestaurant;
