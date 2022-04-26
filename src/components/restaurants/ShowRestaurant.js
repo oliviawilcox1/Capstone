@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { getOneRestaurant } from '../../api/restaurants'
-
+import { Link } from 'react-router-dom'
 import { useParams, useNavigate} from 'react-router-dom'
 
 
 
 const style = {
-    display: 'flex',
-    justifyContent: 'center',
-    flexFlow: 'wrap'
+    textAlign: 'center'
 }
 
 const ShowRestaurant = (props) => {
     const [restaurant, setRestaurant] = useState(null)
+    const [review, setReview] = useState(null)
     const { id } = useParams()
     const navigate = useNavigate()
 
@@ -32,18 +31,23 @@ const ShowRestaurant = (props) => {
 
     return (
         <>
+        <div style = {style}>
             <h1>{restaurant.name}</h1>
-            <img src={`${restaurant.image}`} alt=''/>
+            <img src={`${restaurant.image}`} alt='' style={{ height: '400px', width: 'auto'}}/>
+        <div style={{ font: '12px'}}>
             <p>Located at {restaurant.address}</p>
             <p>{restaurant.visitors} visitors</p>
             <p>{restaurant.cuisine}</p>
             <p>{restaurant.rating}</p>
-            <div>
-                <h3>{restaurant.description}</h3>
+         </div>
+            <div style={{ width: '550px', margin: 'auto'}}>
+                <h3>What to Expect:</h3>
+                <h4> {restaurant.description}</h4>
             </div>
             <button>Add to your Future Eats</button>
             <h3> Reviews </h3>
-            <button> Add a Review </button>
+            <Link to={`/reviews`}>  <button> Add a Review </button>  </Link>
+        </div>
         </>
     )
 
