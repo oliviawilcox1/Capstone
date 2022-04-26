@@ -3,7 +3,7 @@ import ReviewForm from '../shared/ReviewForm'
 import { createReview } from "../../api/reviews";
 
 
-const createReview = (props) => {
+const CreateReview = (props) => {
     const { user, restaurants, triggerRefresh} = props
     const [review, setReview] = useState(null)
 
@@ -22,3 +22,5 @@ const createReview = (props) => {
 
 
 }
+
+export default CreateReview
