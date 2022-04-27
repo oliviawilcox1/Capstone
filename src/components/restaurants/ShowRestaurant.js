@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { getOneRestaurant } from '../../api/restaurants'
 import { Link } from 'react-router-dom'
 import { useParams, useNavigate} from 'react-router-dom'
+import ShowReviewModal from '../reviews/ShowReview'
+import EditReview from '../reviews/EditReview'
 
 
 
@@ -10,24 +12,44 @@ const style = {
 }
 
 const ShowRestaurant = (props) => {
+    const { user, msgAlert } = props;
     const [restaurant, setRestaurant] = useState(null)
-    const [review, setReview] = useState(null)
+    // const [review, setReview] = useState(null)
+    const [reviewModalOpen, setReviewModalOpen] = useState(false)
+    const [updated, setUpdated] = useState(false);
     const { id } = useParams()
     const navigate = useNavigate()
 
     useEffect(()=> {
         getOneRestaurant(id)
             .then((res)=> {
-                console.log(res.data.product)
+                console.log(res.data.restaurant)
                 setRestaurant(res.data.restaurant)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [updated])
 
 
     if (!restaurant) {
         return <p>Loading..</p>
     }
+
+    console.log(restaurant.review)
+    // let reviewCards = null;
+    // if (review) {
+    //     console.log('review', review)
+    //         reviewCards = restaurant.reviews.map(review => (
+    //             <ShowReviewModal
+    //                 key={review._id} review={review} restaurant={restaurant} 
+    //                 user={user} msgAlert={msgAlert}
+    //                 triggerRefresh={() => setUpdated(prev => !prev)}
+    //             />
+    //         ))
+    //         console.log('review', reviewCards)
+    //     }
+    
+
+
 
     return (
         <>
@@ -47,6 +69,7 @@ const ShowRestaurant = (props) => {
             <button>Add to your Future Eats</button>
             <h3> Reviews </h3>
             <Link to={`/${id}/reviews`}>  <button> Add a Review </button>  </Link>
+            {/* <p> {reviewCards}</p>  */}
         </div>
         </>
     )

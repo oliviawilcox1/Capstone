@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import {Form, Container, Button} from 'react-bootstrap'
-// import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 const ReviewForm = (props) => {
     const { user, review, handleChange, handleSubmit, heading } = props
     console.log('USER', user)
-
+    const { id } = useParams()
 
     return (
         <Container>
@@ -25,7 +27,7 @@ const ReviewForm = (props) => {
                     name='review'
                     onChange={handleChange}
                 />
-                <Button type='submit'>Submit</Button>
+                <Link to ={`/restaurants/${id}`}><Button type='submit'>Submit</Button></Link>
             </Form>
 
         </Container>

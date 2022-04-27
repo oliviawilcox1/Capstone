@@ -6,11 +6,11 @@ import {deleteReview} from '../../api/reviews.js'
 const ShowReviewModal = (props) => {
     const {review, restaurant, user, triggerRefresh, msgAlert} = props
 
-    const [showEditModal, setEditModel]= useState(false)
+    const [showEditModal, setShowEditModal]= useState(false)
 
     const destroyReview = () => {
         console.log('DESTROYING REVIEW')
-        console.log('PRODUCT: ', restaurant._id)
+        console.log('Restaurant: ', restaurant._id)
         console.log('REVIEW: ', review._id)
         deleteReview(user, restaurant._id, review._id)
             .then(()=> 
