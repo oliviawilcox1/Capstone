@@ -1,9 +1,9 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const createReview = (user, newReview) => {
+export const createReview = (user, newReview, id) => {
     return axios({
-        url: `${apiUrl}/reviews`,
+        url: `${apiUrl}/${id}/reviews`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`

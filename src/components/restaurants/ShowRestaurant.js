@@ -46,7 +46,7 @@ const ShowRestaurant = (props) => {
             </div>
             <button>Add to your Future Eats</button>
             <h3> Reviews </h3>
-            <Link to={`/reviews`}>  <button> Add a Review </button>  </Link>
+            <Link to={`/${id}/reviews`}>  <button> Add a Review </button>  </Link>
         </div>
         </>
     )
