@@ -54,7 +54,7 @@ const ShowReviewModal = (props) => {
                     }
                 </Card.Body>
             </Card>
-            <EditReviewModal 
+            <EditReview
                 user={user}
                 restaurant={restaurant}
                 review={review}
@@ -64,15 +64,6 @@ const ShowReviewModal = (props) => {
                 triggerRefresh={triggerRefresh}
             />
         </>
-
-
-
-
-
-
-
-
-
-
         )
 }
+export default ShowReviewModal
