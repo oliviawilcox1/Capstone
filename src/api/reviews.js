@@ -1,6 +1,11 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+
+export const getAllReviews = () => {
+    return axios(`${apiUrl}/reviews`)
+}
+
 export const createReview = (user, newReview, id) => {
     return axios({
         url: `${apiUrl}/${id}/reviews`,
