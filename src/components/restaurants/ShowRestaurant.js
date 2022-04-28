@@ -7,6 +7,7 @@ import EditReview from '../reviews/EditReview'
 import { getAllReviews } from '../../api/reviews'
 
 
+
 const style = {
     textAlign: 'center'
 }
@@ -15,7 +16,8 @@ const style = {
 const ShowRestaurant = (props) => {
     const { user, msgAlert } = props;
     const [restaurant, setRestaurant] = useState(null)
-    const [review, setReviews] = useState([])
+    const [review, setReviews] = useState()
+    const [favorite, setFavorite] = useState(null)
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false);
     const { id } = useParams()
@@ -87,10 +89,15 @@ const ShowRestaurant = (props) => {
     const handleClick = (e) => {
         // e === event
         // e.preventDefault()
-
+        if (user === null) {
+            console.log('cant')
+        } else {
         console.log('the restaurant to submit', restaurant)
         console.log('user',user.favorites)
-        user.favorites.push(restaurant)
+        let favorite = user.favorites.push(restaurant)
+            setFavorite(favorite)
+        }
+        console.log(user)
         // createReview(user, product._id, review)
         //     // if create is successful, we should navigate to the show page
         //     .then(() => handleClose())
@@ -114,18 +121,18 @@ const ShowRestaurant = (props) => {
 
 
     console.log(review)
-    let reviewCards = []
-    if (review.length>0) {
-        console.log('review', review)
-            reviewCards = review.map(review => (
-                <ShowReviewModal
-                    key={review._id} review={review} restaurant={restaurant} 
-                    user={user} msgAlert={msgAlert}
-                    triggerRefresh={() => setUpdated(prev => !prev)}
-                />
-            ))
-            console.log('review', reviewCards)
-        }
+    // let reviewCards = []
+    // if (review.length>0) {
+    //     console.log('review', review)
+    //         reviewCards = review.map(review => (
+    //             <ShowReviewModal
+    //                 key={review._id} review={review} restaurant={restaurant} 
+    //                 user={user} msgAlert={msgAlert}
+    //                 triggerRefresh={() => setUpdated(prev => !prev)}
+    //             />
+    //         ))
+    //         console.log('review', reviewCards)
+    //     }
     
 
 
@@ -148,7 +155,7 @@ const ShowRestaurant = (props) => {
             <button onClick={() => handleClick()}>Add to your Future Eats</button>
             <h3> Reviews </h3>
             <Link to={`/${id}/reviews`}>  <button> Add a Review </button>  </Link>
-            <p> {reviewCards}</p> 
+            {/* <p> {reviewCards}</p>  */}
         </div>
         </>
     )

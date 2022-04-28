@@ -1,6 +1,6 @@
+import axios from "axios";
 import apiUrl from '../apiConfig'
-import axios from "axios"
 
-export const getOneUser = (userId) => {
-    return axios(`${apiUrl}/profile/${userId}`)
+export const getOneRestaurant = (userId) => {
+    return axios(`${apiUrl}/restaurants/${userId}`)
 }

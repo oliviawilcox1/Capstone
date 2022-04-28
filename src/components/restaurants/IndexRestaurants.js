@@ -26,6 +26,13 @@ const IndexRestaurants = (props) => {
     if(!restaurants) {
         return <h1>Loading...</h1>
     } 
+    // let profile 
+    // if(user) {
+    //    profile = <Link to={`profile/${user._id}`} className='ml-auto m-2' >
+	// 				Profile
+	// 	  		</Link>
+    // }
+
 
     let restaurantCards 
     if (restaurants.length > 0) {
@@ -45,6 +52,7 @@ return (
     <h1>Top Three Places To Eat At This Month </h1>
         <h1>All Restaurants in NYC</h1><br/>
         <div style ={style}>
+              
                 {restaurantCards}
         </div>
     

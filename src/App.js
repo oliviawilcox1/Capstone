@@ -15,6 +15,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import ShowRestaurant from './components/restaurants/ShowRestaurant'
 import CreateReview from './components/reviews/CreateReview'
 import ShowProfile from './components/profiles/ShowProfile'
+import { Link } from 'react-router-dom'
 
 const App = () => {
 
@@ -46,6 +47,7 @@ const App = () => {
 		return (
 			<Fragment>
 				<Header user={user} />
+				
 				<Routes>
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 					<Route

@@ -2,10 +2,12 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 const linkStyle = {
     color: 'black',
     textDecoration: 'none'
 }
+
 const authenticatedOptions = (
 	<>
 		{/* <Nav.Link>
@@ -14,9 +16,7 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Link> */}
 		<Nav.Link>
-			<Link to='profile/:id' className='ml-auto m-2' style={linkStyle}>
-				Profile
-		  	</Link>
+			
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -57,10 +57,13 @@ const Header = ({ user }) => (
 		<Navbar.Collapse id='basic-navbar-nav' >
 			<Nav className='ml-auto m-2'>
 				{user && (
-					<span class="m-2">Welcome, {user.name}!</span>
+					<span class="m-2">Welcome, {user.name}!<Link to={`profile/${user._id}`} className='ml-auto m-2' >
+					Profile
+		  		</Link></span>
 					
 				)
 				}
+			
 				
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
