@@ -25,7 +25,8 @@ if(user) {
 if (user.favorites.length > 0) {
 futureEats = user.favorites.map(favorite => {
    return <div key={favorite.id} style={{width: '700px', textAlign:'center'}}>
-        <h2 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite.name}</h2>
+       <Link to={`/restaurants/${favorite._id}`}> <h2 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite.name}</h2>
+        </Link>
     </div>
 })
 }
