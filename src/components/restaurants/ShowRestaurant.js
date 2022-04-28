@@ -22,6 +22,8 @@ const ShowRestaurant = (props) => {
     const navigate = useNavigate()
 
 
+   
+
     
     const isFavorite = () => {
         let faveArray = []
@@ -82,6 +84,34 @@ const ShowRestaurant = (props) => {
     if (!restaurant) {
         return <p>Loading..</p>
     }
+    const handleClick = (e) => {
+        // e === event
+        // e.preventDefault()
+
+        console.log('the restaurant to submit', restaurant)
+        console.log('user',user.favorites)
+        user.favorites.push(restaurant)
+        // createReview(user, product._id, review)
+        //     // if create is successful, we should navigate to the show page
+        //     .then(() => handleClose())
+        //     // then we send a success message
+        //     .then(() =>
+        //         msgAlert({
+        //             heading: 'Review Created',
+        //             message: 'Thank you for your feedback!',
+        //             variant: 'success',
+        //         }))
+        //     .then(() => triggerRefresh())
+        //     // if there is an error, we'll send an error message
+        //     .catch(() =>
+        //         msgAlert({
+        //             heading: 'Oh No!',
+        //             message: 'Please try again.',
+        //             variant: 'danger',
+        //         }))
+    }
+
+
 
     console.log(review)
     let reviewCards = []
@@ -115,7 +145,7 @@ const ShowRestaurant = (props) => {
                 <h3>What to Expect:</h3>
                 <h4> {restaurant.description}</h4>
             </div>
-            <button>Add to your Future Eats</button>
+            <button onClick={() => handleClick()}>Add to your Future Eats</button>
             <h3> Reviews </h3>
             <Link to={`/${id}/reviews`}>  <button> Add a Review </button>  </Link>
             <p> {reviewCards}</p> 

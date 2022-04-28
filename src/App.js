@@ -62,7 +62,10 @@ const App = () => {
 					/>
 					<Route 
 						path="profile/:id"
-						element={<ShowProfile user ={user} />}
+						element={
+						<RequireAuth user={user}>
+						<ShowProfile user ={user} />
+						</RequireAuth>}
 					/>
 					<Route
 						path='/sign-out'

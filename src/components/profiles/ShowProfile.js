@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { getOneUser } from '../../api/profile'
 import { useParams } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 const ShowProfile = (props) => {
     const { user } = props
@@ -18,14 +18,16 @@ const ShowProfile = (props) => {
 
 // going to need to map both the future eats and reviews
 
-// let futureEats
-// if (user.favorites.length > 0) {
-// futureEats = user.favorites.map(favorite => {
-//    return <div key={favorite.id} style={{width: '700px', textAlign:'center'}}>
-//         <Link to={`restaurants/${restaurant._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite}</h2></Link>
-//     </div>
-// })
-// }
+let futureEats
+if(user) {
+if (user.favorites.length > 0) {
+futureEats = user.favorites.map(favorite => {
+   return <div key={favorite.id} style={{width: '700px', textAlign:'center'}}>
+        <Link to={`restaurants/${id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite}</h2></Link>
+    </div>
+})
+}
+}
 
 
 return (
@@ -40,8 +42,7 @@ return (
         <h3 style={{textAlign: 'right'}}> Future Eats </h3>
         <ul>
             <li>
-                Hello
-                {/* {futureEats} */}
+                {futureEats}
             </li>
         </ul>
         <h3 style={{textAlign: 'right'}}> Previous Reviews </h3>
