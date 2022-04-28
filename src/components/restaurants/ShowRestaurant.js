@@ -27,51 +27,48 @@ const ShowRestaurant = (props) => {
    
 
     
-    const isFavorite = () => {
-        let faveArray = []
-        getAllReviews()
-          .then(res => {
-              console.log('this is the favoritesArray', res.data.reviews)
-              // setFavoriteArray(res.data.favorites)
-              faveArray = res.data.reviews
-              return faveArray
-            })
-            .then(faveArray => {
-                // Itterating through faveArray but we're going through the entire thing and ending on the last item in array
-                // whether or not something ends up equaling the Id if the last item in the array does not equal the array,
-                // set hidden will be set equal to false
-                // consider writing a filter function that returns it true or false
-                // set hidden to the value that is return to the 'variable is fave'
-                // const isFave = faveArray.filter((product) => {
-                //   product 
-                // })
+    // const isFavorite = () => {
+    //     let faveArray = []
+    //     getAllReviews()
+    //       .then(res => {
+    //           console.log('this is the favoritesArray', res.data.reviews)
+    //           // setFavoriteArray(res.data.favorites)
+    //           faveArray = res.data.reviews
+    //           return faveArray
+    //         })
+    //         .then(faveArray => {
+    //             // Itterating through faveArray but we're going through the entire thing and ending on the last item in array
+    //             // whether or not something ends up equaling the Id if the last item in the array does not equal the array,
+    //             // set hidden will be set equal to false
+    //             // consider writing a filter function that returns it true or false
+    //             // set hidden to the value that is return to the 'variable is fave'
+    //             // const isFave = faveArray.filter((product) => {
+    //             //   product 
+    //             // })
         
-                for( const i in faveArray ) {
-                //   console.log('favorite product id', faveArray[i].product._id)
-                //   console.log('Show product id',  id)
-                  if (faveArray[i].restaurant._id == id) {
-                    console.log('review', faveArray.review)
+    //             for( const i in faveArray ) {
+    //             //   console.log('favorite product id', faveArray[i].product._id)
+    //             //   console.log('Show product id',  id)
+    //               if (faveArray[i].restaurant._id == id) {
+    //                 console.log('review', faveArray.review)
 
-                    // return setHidden(true) // this is not working
-                  } else {
-                    console.log('review', faveArray)
+    //                 // return setHidden(true) // this is not working
+    //               } else {
+    //                 console.log('review', faveArray)
                    
-                  }
-                } 
-              })  
-            .catch(error => console.log(error))
-    }
+    //               }
+    //             } 
+    //           })  
+    //         .catch(error => console.log(error))
+    // }
 
 
     useEffect(()=> {
         getOneRestaurant(id)
-            .then((res)=> {
-                console.log(res.data.restaurant)
-                setRestaurant(res.data.restaurant)
+            .then((res)=> { setRestaurant(res.data.restaurant) })
                 // setReviews(res.data.restaurant.review)
                 // console.log('reviews', review)
-                isFavorite()
-            })
+                // isFavorite()
             .catch(err => console.log(err))
     //    getAllReviews()
     //             .then(res => {
@@ -86,41 +83,45 @@ const ShowRestaurant = (props) => {
     if (!restaurant) {
         return <p>Loading..</p>
     }
+
+
+
     const handleClick = (e) => {
-        // e === event
-        // e.preventDefault()
+    
         if (user === null) {
             console.log('cant')
         } else {
-        console.log('the restaurant to submit', restaurant)
-        console.log('user',user.favorites)
-        let favorite = user.favorites.push(restaurant)
-            setFavorite(favorite)
+            // console.log('the restaurant to submit', restaurant)
+            // console.log('user',user.favorites)
+            let favorite = user.favorites.push(restaurant)
+                setFavorite(favorite)
         }
-        console.log(user)
-        // createReview(user, product._id, review)
-        //     // if create is successful, we should navigate to the show page
-        //     .then(() => handleClose())
-        //     // then we send a success message
-        //     .then(() =>
-        //         msgAlert({
-        //             heading: 'Review Created',
-        //             message: 'Thank you for your feedback!',
-        //             variant: 'success',
-        //         }))
-        //     .then(() => triggerRefresh())
-        //     // if there is an error, we'll send an error message
-        //     .catch(() =>
-        //         msgAlert({
-        //             heading: 'Oh No!',
-        //             message: 'Please try again.',
-        //             variant: 'danger',
-        //         }))
+            console.log(user)
     }
 
 
 
-    console.log(review)
+
+
+    // createReview(user, product._id, review)
+    //     // if create is successful, we should navigate to the show page
+    //     .then(() => handleClose())
+    //     // then we send a success message
+    //     .then(() =>
+    //         msgAlert({
+    //             heading: 'Review Created',
+    //             message: 'Thank you for your feedback!',
+    //             variant: 'success',
+    //         }))
+    //     .then(() => triggerRefresh())
+    //     // if there is an error, we'll send an error message
+    //     .catch(() =>
+    //         msgAlert({
+    //             heading: 'Oh No!',
+    //             message: 'Please try again.',
+    //             variant: 'danger',
+    //         }))
+    //    console.log(review)
     // let reviewCards = []
     // if (review.length>0) {
     //     console.log('review', review)
