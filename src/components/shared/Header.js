@@ -14,10 +14,14 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Link> */}
 		<Nav.Link>
+			<Link to='profile/:id' className='ml-auto m-2' style={linkStyle}>
+				Profile
+		  	</Link>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
 		</Nav.Link>
+		
 	</>
 )
 
@@ -53,8 +57,11 @@ const Header = ({ user }) => (
 		<Navbar.Collapse id='basic-navbar-nav' >
 			<Nav className='ml-auto m-2'>
 				{user && (
-					<span class="m-2">Welcome, {user.name}</span>
-				)}
+					<span class="m-2">Welcome, {user.name}!</span>
+					
+				)
+				}
+				
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>

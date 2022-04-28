@@ -14,6 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowRestaurant from './components/restaurants/ShowRestaurant'
 import CreateReview from './components/reviews/CreateReview'
+import ShowProfile from './components/profiles/ShowProfile'
 
 const App = () => {
 
@@ -58,6 +59,10 @@ const App = () => {
 					<Route 
 						path="restaurants/:id"
 						element={<ShowRestaurant user ={user} />}
+					/>
+					<Route 
+						path="profile/:id"
+						element={<ShowProfile user ={user} />}
 					/>
 					<Route
 						path='/sign-out'

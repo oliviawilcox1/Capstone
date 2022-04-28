@@ -11,40 +11,81 @@ const style = {
     textAlign: 'center'
 }
 
+
 const ShowRestaurant = (props) => {
     const { user, msgAlert } = props;
     const [restaurant, setRestaurant] = useState(null)
-    const [review, setReviews] = useState(null)
+    const [review, setReviews] = useState([])
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false);
     const { id } = useParams()
     const navigate = useNavigate()
+
+
+    
+    const isFavorite = () => {
+        let faveArray = []
+        getAllReviews()
+          .then(res => {
+              console.log('this is the favoritesArray', res.data.reviews)
+              // setFavoriteArray(res.data.favorites)
+              faveArray = res.data.reviews
+              return faveArray
+            })
+            .then(faveArray => {
+                // Itterating through faveArray but we're going through the entire thing and ending on the last item in array
+                // whether or not something ends up equaling the Id if the last item in the array does not equal the array,
+                // set hidden will be set equal to false
+                // consider writing a filter function that returns it true or false
+                // set hidden to the value that is return to the 'variable is fave'
+                // const isFave = faveArray.filter((product) => {
+                //   product 
+                // })
+        
+                for( const i in faveArray ) {
+                //   console.log('favorite product id', faveArray[i].product._id)
+                //   console.log('Show product id',  id)
+                  if (faveArray[i].restaurant._id == id) {
+                    console.log('review', faveArray.review)
+
+                    // return setHidden(true) // this is not working
+                  } else {
+                    console.log('review', faveArray)
+                   
+                  }
+                } 
+              })  
+            .catch(error => console.log(error))
+    }
+
 
     useEffect(()=> {
         getOneRestaurant(id)
             .then((res)=> {
                 console.log(res.data.restaurant)
                 setRestaurant(res.data.restaurant)
+                // setReviews(res.data.restaurant.review)
+                // console.log('reviews', review)
+                isFavorite()
             })
             .catch(err => console.log(err))
-       getAllReviews()
-                .then(res => {
-                    console.log('res', res)
-                    setReviews(res.data.reviews)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+    //    getAllReviews()
+    //             .then(res => {
+    //                 console.log('res', res.data)
+    //                 setReviews(res.data.reviews)
+    //             })
+    //             .catch(err => {
+    //                 console.log(err)
+    //             })
     }, [updated])
-
 
     if (!restaurant) {
         return <p>Loading..</p>
     }
 
     console.log(review)
-    let reviewCards = null;
-    if (review) {
+    let reviewCards = []
+    if (review.length>0) {
         console.log('review', review)
             reviewCards = review.map(review => (
                 <ShowReviewModal

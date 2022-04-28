@@ -39,8 +39,8 @@ const CreateReview = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault ()
-
-        createReview(user, review, id)
+        
+        createReview(user._id, id, review)
             .then(() =>
             msgAlert({
                 heading: 'Review Created',
