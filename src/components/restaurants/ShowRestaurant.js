@@ -5,7 +5,7 @@ import { useParams, useNavigate} from 'react-router-dom'
 import ShowReviewModal from '../reviews/ShowReview'
 import EditReview from '../reviews/EditReview'
 import { getAllReviews } from '../../api/reviews'
-
+import { createFavorite } from '../../api/restaurants'
 
 
 const style = {
@@ -17,6 +17,7 @@ const ShowRestaurant = (props) => {
     const { user, msgAlert } = props;
     const [restaurant, setRestaurant] = useState(null)
     const [review, setReviews] = useState()
+    const [hidden, setHidden] = useState(false)
     const [favorite, setFavorite] = useState(null)
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false);
@@ -25,47 +26,44 @@ const ShowRestaurant = (props) => {
 
 
    
+    const display = () => {
+       
+        if (user === null) {
+            console.log('cant')
+            setHidden(true)
+        } else {
+                console.log('FAV', user.favorites)
+                let faveArray = user.favorites  
+                for (const i in faveArray ) {
+                    console.log('favorite product id', faveArray[i]._id)
+                    console.log('Show product id',  id)
+                    if (faveArray[i]._id == id) {
+                    // console.log('Do not display favorite button')
+                        setHidden(true)
+                        return
+                    } else {
+                    // console.log('Display Favorite button')
+                        setHidden(false)
+                    }
 
-    
-    // const isFavorite = () => {
-    //     let faveArray = []
-    //     getAllReviews()
-    //       .then(res => {
-    //           console.log('this is the favoritesArray', res.data.reviews)
-    //           // setFavoriteArray(res.data.favorites)
-    //           faveArray = res.data.reviews
-    //           return faveArray
-    //         })
-    //         .then(faveArray => {
-    //             // Itterating through faveArray but we're going through the entire thing and ending on the last item in array
-    //             // whether or not something ends up equaling the Id if the last item in the array does not equal the array,
-    //             // set hidden will be set equal to false
-    //             // consider writing a filter function that returns it true or false
-    //             // set hidden to the value that is return to the 'variable is fave'
-    //             // const isFave = faveArray.filter((product) => {
-    //             //   product 
-    //             // })
-        
-    //             for( const i in faveArray ) {
-    //             //   console.log('favorite product id', faveArray[i].product._id)
-    //             //   console.log('Show product id',  id)
-    //               if (faveArray[i].restaurant._id == id) {
-    //                 console.log('review', faveArray.review)
+                return user
+        }
+    }
+}
 
-    //                 // return setHidden(true) // this is not working
-    //               } else {
-    //                 console.log('review', faveArray)
-                   
-    //               }
-    //             } 
-    //           })  
-    //         .catch(error => console.log(error))
-    // }
+
+
+
+
+
 
 
     useEffect(()=> {
         getOneRestaurant(id)
-            .then((res)=> { setRestaurant(res.data.restaurant) })
+            .then((res)=> { 
+                setRestaurant(res.data.restaurant) 
+                display()
+            })
                 // setReviews(res.data.restaurant.review)
                 // console.log('reviews', review)
                 // isFavorite()
@@ -86,21 +84,53 @@ const ShowRestaurant = (props) => {
 
 
 
-    const handleClick = (e) => {
-    
-        if (user === null) {
-            console.log('cant')
-        } else {
-            // console.log('the restaurant to submit', restaurant)
-            // console.log('user',user.favorites)
-            let favorite = user.favorites.push(restaurant)
-                setFavorite(favorite)
-        }
-            console.log(user)
-    }
+//     const handleClick = (e) => {
+//         setHidden(false)
+//         if (user === null) {
+//             console.log('cant')
+//             setHidden(true)
+//         } else {
+//             // console.log('the restaurant to submit', restaurant)
+//             // console.log('user',user.favorites)
+//             createFavorite(user, user._id, restaurant)
+//             console.log("user", user)
+//                 let favorite = user.favorites.push(restaurant)
+//                 setFavorite(user.favorites) 
+//                 setHidden(true)
+//                 console.log('FAV', user.favorites)
+//                 return user.favorites
+//         }
 
 
+//   if(user != null ) {
+//         let faveArray = user.favorites   
+//         console.log(faveArray) 
+//         // if()
+//         for (const i in faveArray ) {
+//             console.log('favorite product id', faveArray[i]._id)
+//             console.log('Show product id',  id)
+//             if (faveArray[i]._id == id) {
+//             // console.log('Do not display favorite button')
+//                 setHidden(true)
+//                 return
+//             } else {
+//             // console.log('Display Favorite button')
+//                 setHidden(false)
+//             }
+//         } 
+//     }
+// }
 
+const handleClick = (e) => {
+    // console.log('the restaurant to submit', restaurant)
+    // console.log('user',user.favorites)
+    createFavorite(user, user._id, restaurant)
+        let favorite = user.favorites.push(restaurant)
+         setFavorite(user.favorites) 
+         setHidden(true)
+         console.log('user fav array', user.favorites)
+         return user
+  }
 
 
     // createReview(user, product._id, review)
@@ -153,13 +183,13 @@ const ShowRestaurant = (props) => {
                 <h3>What to Expect:</h3>
                 <h4> {restaurant.description}</h4>
             </div>
-            <button onClick={() => handleClick()}>Add to your Future Eats</button>
+            <button style={{ display: hidden ? 'none' : 'block'}} onClick={() => handleClick()}>Add to your Future Eats</button>
             <h3> Reviews </h3>
             <Link to={`/${id}/reviews`}>  <button> Add a Review </button>  </Link>
             {/* <p> {reviewCards}</p>  */}
         </div>
         </>
     )
-
+    // onClick={() => handleClick()}
 }
 export default ShowRestaurant;
