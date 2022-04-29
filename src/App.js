@@ -14,7 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowRestaurant from './components/restaurants/ShowRestaurant'
 import CreateReview from './components/reviews/CreateReview'
-import ShowProfile from './components/profiles/ShowProfile'
+import ShowProfile from './components/user/ShowProfile'
 import { Link } from 'react-router-dom'
 
 const App = () => {

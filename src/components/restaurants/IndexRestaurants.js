@@ -6,6 +6,7 @@ const style = {
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
+    margin: '20px'
 }
 
 const IndexRestaurants = (props) => {
@@ -46,10 +47,41 @@ const IndexRestaurants = (props) => {
     })
     }
 
+
+    let highlights
+    if (restaurants.length > 0) {
+        highlights =  <div style ={{display: 'flex', flexDirection:'row', flexWrap: 'wrap', margin:'20px'}}>
+        <div style={{ textAlign: 'center', margin:'auto'}}>
+
+                <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>
+                <img src={`${restaurants[12].image}`} style={{ height:'300px', width: '300px'}} />
+                <p>{restaurants[12].rating} Stars </p>
+                <p>Located at {restaurants[12].address}</p>
+                </div>
+               
+               <div style={{ textAlign: 'center', margin:'auto'}}>
+               <Link to={`restaurants/${restaurants[4]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[6].name}</h3></Link>
+                <img src={`${restaurants[6].image}`} style={{ height:'300px',  width: '300px'}}/>
+                <p>{restaurants[6].rating} Stars </p>
+                <p>Located at {restaurants[6].address}</p>
+                </div>
+
+                <div style={{ textAlign: 'center', margin:'auto'}}>
+                <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link>
+                <img src={`${restaurants[8].image}`} style={{ height:'300px', width: '300px'}}/>
+                <p>{restaurants[8].rating} Stars </p>
+                <p>Located at {restaurants[8].address}</p>
+            </div>
+            </div>
+        }
+
 return (
     <>
 
     <h1>Top Three Places To Eat At This Month </h1>
+    <div>
+        {highlights}
+  </div>
         <h1>All Restaurants in NYC</h1><br/>
         <div style ={style}>
               
