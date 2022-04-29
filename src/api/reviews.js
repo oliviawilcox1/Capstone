@@ -8,7 +8,7 @@ export const getAllReviews = () => {
 
 export const createReview = (user, newReview, id) => {
     return axios({
-        url: `${apiUrl}/${id}/reviews`,
+        url: `${apiUrl}/reviews/${id}`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`

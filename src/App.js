@@ -85,7 +85,7 @@ const App = () => {
 						</RequireAuth>}
 					/>
 					<Route 
-						path='/:id/reviews'
+						path='/reviews/:id'
 						element={
 							<RequireAuth user={user}>
 								<CreateReview msgAlert={msgAlert} user={user}/>

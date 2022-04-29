@@ -16,7 +16,7 @@ const style = {
 const ShowRestaurant = (props) => {
     const { user, msgAlert } = props;
     const [restaurant, setRestaurant] = useState(null)
-    const [review, setReviews] = useState()
+    const [reviews, setReviews] = useState()
     const [hidden, setHidden] = useState(false)
     const [favorite, setFavorite] = useState(null)
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
@@ -68,14 +68,15 @@ const ShowRestaurant = (props) => {
                 // console.log('reviews', review)
                 // isFavorite()
             .catch(err => console.log(err))
-    //    getAllReviews()
-    //             .then(res => {
-    //                 console.log('res', res.data)
-    //                 setReviews(res.data.reviews)
-    //             })
-    //             .catch(err => {
-    //                 console.log(err)
-    //             })
+        getAllReviews()
+                .then(res => {
+                    console.log('res', res.data.reviews)
+                    setReviews(res.data.reviews)
+                    return reviews
+                })
+                .catch(err => {
+                    console.log(err)
+                })
     }, [updated])
 
     if (!restaurant) {
@@ -84,49 +85,12 @@ const ShowRestaurant = (props) => {
 
 
 
-//     const handleClick = (e) => {
-//         setHidden(false)
-//         if (user === null) {
-//             console.log('cant')
-//             setHidden(true)
-//         } else {
-//             // console.log('the restaurant to submit', restaurant)
-//             // console.log('user',user.favorites)
-//             createFavorite(user, user._id, restaurant)
-//             console.log("user", user)
-//                 let favorite = user.favorites.push(restaurant)
-//                 setFavorite(user.favorites) 
-//                 setHidden(true)
-//                 console.log('FAV', user.favorites)
-//                 return user.favorites
-//         }
-
-
-//   if(user != null ) {
-//         let faveArray = user.favorites   
-//         console.log(faveArray) 
-//         // if()
-//         for (const i in faveArray ) {
-//             console.log('favorite product id', faveArray[i]._id)
-//             console.log('Show product id',  id)
-//             if (faveArray[i]._id == id) {
-//             // console.log('Do not display favorite button')
-//                 setHidden(true)
-//                 return
-//             } else {
-//             // console.log('Display Favorite button')
-//                 setHidden(false)
-//             }
-//         } 
-//     }
-// }
-
 const handleClick = (e) => {
     // console.log('the restaurant to submit', restaurant)
     // console.log('user',user.favorites)
     createFavorite(user, user._id, restaurant)
-        let favorite = user.favorites.push(restaurant)
-         setFavorite(user.favorites) 
+        // let favorite = user.favorites.push(restaurant)
+         setFavorite(user.favorites.push(restaurant)) 
          setHidden(true)
          console.log('user fav array', user.favorites)
          return user
@@ -152,19 +116,45 @@ const handleClick = (e) => {
     //             variant: 'danger',
     //         }))
     //    console.log(review)
+
+
     // let reviewCards = []
-    // if (review.length>0) {
-    //     console.log('review', review)
-    //         reviewCards = review.map(review => (
+    // if(reviews != undefined ) {
+   
+    //     console.log('review', reviews)
+    //         reviewCards = reviews.map(review => (
+               
     //             <ShowReviewModal
     //                 key={review._id} review={review} restaurant={restaurant} 
     //                 user={user} msgAlert={msgAlert}
     //                 triggerRefresh={() => setUpdated(prev => !prev)}
     //             />
     //         ))
-    //         console.log('review', reviewCards)
-    //     }
-    
+    // }
+ 
+// THIS IS TO ONLY SHOW REVIEWS SPECIFIC TO RESTAURANT
+let reviewCards = []
+if(reviews != undefined ) {
+    for (const i in reviews ) {
+        console.log('reviews', reviews[i].restaurant._id)
+        console.log('Show product id',  id)
+        if (reviews[i].restaurant._id == id) {
+        // console.log('Do not display favorite button')
+        console.log('review', reviews)
+        reviewCards = reviews.map(review => (
+           
+            <ShowReviewModal
+                key={review._id} review={review} restaurant={restaurant} 
+                user={user} msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+            />
+        ))
+        } else {
+        // console.log('Display Favorite button')
+            console.log('erg')
+        }
+    }
+    }
 
 
 
@@ -185,11 +175,11 @@ const handleClick = (e) => {
             </div>
             <button style={{ display: hidden ? 'none' : 'block'}} onClick={() => handleClick()}>Add to your Future Eats</button>
             <h3> Reviews </h3>
-            <Link to={`/${id}/reviews`}>  <button> Add a Review </button>  </Link>
-            {/* <p> {reviewCards}</p>  */}
+            <Link to={`/reviews/${id}`}>  <button> Add a Review </button>  </Link>
+            <p> {reviewCards}</p> 
+         
         </div>
         </>
     )
-    // onClick={() => handleClick()}
 }
 export default ShowRestaurant;
