@@ -41,6 +41,7 @@ const IndexRestaurants = (props) => {
        return <div key={restaurant.id} style={{width: '700px', textAlign:'center'}}>
             <Link to={`restaurants/${restaurant._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurant.name}</h2></Link>
             <p>{restaurant.rating} Stars </p>
+            <p>{restaurant.visitors} Visitors </p>
             <p>Located at {restaurant.address}</p>
             <img src={`${restaurant.image}`} style={{ height: '350px', width: '550px'}}/>
         </div>
@@ -60,7 +61,7 @@ const IndexRestaurants = (props) => {
                 </div>
                
                <div style={{ textAlign: 'center', margin:'auto'}}>
-               <Link to={`restaurants/${restaurants[4]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[6].name}</h3></Link>
+               <Link to={`restaurants/${restaurants[6]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[6].name}</h3></Link>
                 <img src={`${restaurants[6].image}`} style={{ height:'300px',  width: '300px'}}/>
                 <p>{restaurants[6].rating} Stars </p>
                 <p>Located at {restaurants[6].address}</p>
@@ -78,7 +79,7 @@ const IndexRestaurants = (props) => {
 return (
     <>
 
-    <h1>Top Three Places To Eat At This Month </h1>
+    <h1> Certified Fresh Restaurants of the Week </h1>
     <div>
         {highlights}
   </div>
