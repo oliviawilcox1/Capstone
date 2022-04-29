@@ -28,13 +28,18 @@ if(user) {
     console.log(user.favorites)
 if (user.favorites.length > 0) {
 futureEats = user.favorites.map(favorite => {
-   return <div key={favorite.id} style={{width: '700px', textAlign:'center'}}>
+   return <li>
+   <div key={favorite.id} style={{width: '700px', textAlign:'center'}}>
+       
        <Link to={`/restaurants/${favorite._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite.name}</h2>
        </Link>
     </div>
+    </li>
 })
 } else {
-     futureEats = <div> <h6>See Restaurants You have Saved Here!</h6></div> 
+     futureEats = <li>
+     <div style={{width: '700px', textAlign:'center'}}> <h6>See Restaurants You have Saved Here!</h6></div> 
+     </li>
 }
 }
 
@@ -48,12 +53,15 @@ return (
         <h3 style={{margin: ' 25px'}}>Date Joined: {time}</h3>
         </div>
         <div style={{ textAlign:'right', display:'inline-block'}}>
-        <h2 style={{textAlign: 'right'}}> Future Eats </h2>
-        <ul style={{textAlign: 'right'}} >
-            <li>
+       <div>
+        <h2 style={{textAlign: 'center', textDecoration: 'underline'}}> Future Eats </h2>
+         
+        <ul style={{textAlign: 'center'}} >
+           
                 {futureEats}
-            </li>
+          
         </ul>
+        </div>
         {/* <h3 style={{textAlign: 'right'}}> Previous Reviews </h3> */}
         </div>
 
