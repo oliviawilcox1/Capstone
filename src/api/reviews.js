@@ -6,7 +6,7 @@ export const getAllReviews = () => {
     return axios(`${apiUrl}/reviews`)
 }
 
-export const createReview = (user, newReview, id) => {
+export const createReview = (user, id, newReview) => {
     return axios({
         url: `${apiUrl}/reviews/${id}`,
         method: 'POST',

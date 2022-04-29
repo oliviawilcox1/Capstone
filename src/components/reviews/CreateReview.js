@@ -6,8 +6,16 @@ import { useParams, useNavigate} from 'react-router-dom'
 const CreateReview = (props) => {
     const { user, triggerRefresh, handleClose, msgAlert} = props
     const [review, setReview] = useState({})
+    // name: '',
+    // image: '',
+    // description: '',
+    // price: '',
+    // available: false,
+    // category: ''
     const { id } = useParams()
     console.log("ID", id)
+
+
     const handleChange = (e) => {
 
         e.persist()
@@ -23,13 +31,14 @@ const CreateReview = (props) => {
             }
 
             const update = { [name]: value }
+            console.log(update)
             return {...prevReview, ...update}
 
         })
-
+        
     }
     
-
+    console.log(review)
     const addUser = () => {
         setReview(prevReview => {
             const update = {'owner': user._id}
@@ -39,8 +48,8 @@ const CreateReview = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault ()
-        
-        createReview(user._id, id, review)
+        console.log('REVIEW',review)
+        createReview(user, id, review)
             .then(() =>
             msgAlert({
                 heading: 'Review Created',
@@ -48,9 +57,12 @@ const CreateReview = (props) => {
                 variant: 'success',
             }))
 
-            .catch(err => 
-                console.log(err)
-            )
+            .catch(() => 
+                msgAlert({
+                    heading: 'Oh No!',
+                    message: 'Please try again.',
+                    variant: 'danger',
+                }))
     }
 
     return (

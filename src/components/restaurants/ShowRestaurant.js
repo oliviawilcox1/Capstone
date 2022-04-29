@@ -52,21 +52,12 @@ const ShowRestaurant = (props) => {
 }
 
 
-
-
-
-
-
-
     useEffect(()=> {
         getOneRestaurant(id)
             .then((res)=> { 
                 setRestaurant(res.data.restaurant) 
                 display()
             })
-                // setReviews(res.data.restaurant.review)
-                // console.log('reviews', review)
-                // isFavorite()
             .catch(err => console.log(err))
         getAllReviews()
                 .then(res => {
@@ -96,42 +87,6 @@ const handleClick = (e) => {
          return user
   }
 
-
-    // createReview(user, product._id, review)
-    //     // if create is successful, we should navigate to the show page
-    //     .then(() => handleClose())
-    //     // then we send a success message
-    //     .then(() =>
-    //         msgAlert({
-    //             heading: 'Review Created',
-    //             message: 'Thank you for your feedback!',
-    //             variant: 'success',
-    //         }))
-    //     .then(() => triggerRefresh())
-    //     // if there is an error, we'll send an error message
-    //     .catch(() =>
-    //         msgAlert({
-    //             heading: 'Oh No!',
-    //             message: 'Please try again.',
-    //             variant: 'danger',
-    //         }))
-    //    console.log(review)
-
-
-    // let reviewCards = []
-    // if(reviews != undefined ) {
-   
-    //     console.log('review', reviews)
-    //         reviewCards = reviews.map(review => (
-               
-    //             <ShowReviewModal
-    //                 key={review._id} review={review} restaurant={restaurant} 
-    //                 user={user} msgAlert={msgAlert}
-    //                 triggerRefresh={() => setUpdated(prev => !prev)}
-    //             />
-    //         ))
-    // }
- 
 // THIS IS TO ONLY SHOW REVIEWS SPECIFIC TO RESTAURANT
 let reviewCards = []
 if(reviews != undefined ) {
@@ -142,7 +97,6 @@ if(reviews != undefined ) {
         // console.log('Do not display favorite button')
         console.log('review', reviews)
         reviewCards = reviews.map(review => (
-           
             <ShowReviewModal
                 key={review._id} review={review} restaurant={restaurant} 
                 user={user} msgAlert={msgAlert}
@@ -150,7 +104,6 @@ if(reviews != undefined ) {
             />
         ))
         } else {
-        // console.log('Display Favorite button')
             console.log('erg')
         }
     }

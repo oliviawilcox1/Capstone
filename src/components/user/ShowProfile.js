@@ -16,7 +16,7 @@ const ShowProfile = (props) => {
 // })
 
     
-        let time = user.createdAt.toString().slice(0,10)  
+    let time = user.createdAt.toString().slice(0,10)  
            console.log("date",time)
           
    
