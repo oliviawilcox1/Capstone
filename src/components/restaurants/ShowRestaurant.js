@@ -135,7 +135,7 @@ const ShowRestaurant = (props) => {
                 <h1>{restaurant.name}</h1>
                 <img src={`${restaurant.image}`} alt='' style={{ height: '400px', width: 'auto'}}/>
 
-                <div >
+                <div class='form2'>
                     <p>
                         Located at {restaurant.address}<br/>
                         {restaurant.visitors} visitors  <br/>
@@ -144,14 +144,14 @@ const ShowRestaurant = (props) => {
                     </p>
                 </div>
 
-                <div style={{ width: '50%', margin: 'auto', fontSize: '40px'}}>
+                <div class='form2' style={{ width: '50%', margin: 'auto', fontSize: '40px'}}>
                         <h2>A Brief Description: </h2>
                         <h6> {restaurant.description}</h6>
                 </div>
-
-                <button style={{ textAlign: 'center', display: hidden ? 'none' : 'block'}} onClick={() => handleClick()}>Add to your Future Eats</button>
+                <br/>
+                <button style={{margin: '15px', display: hidden ? 'none' : 'inline'}} onClick={() => handleClick()}>Add to your Future Eats</button>
                 <h3> Reviews </h3>
-                <Link to={`/reviews/${id}`}>  <button > Add a Review </button>  </Link>
+                <Link to={`/reviews/${id}`}>  <button style={{margin: '8px'}} > Add a Review </button>  </Link>
                 <p> {reviewCards}</p> 
 
             </div>

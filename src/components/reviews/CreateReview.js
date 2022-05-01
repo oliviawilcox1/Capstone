@@ -47,14 +47,6 @@ const CreateReview = (props) => {
         e.preventDefault ()
         // console.log('This is the Review',review)
         createReview(user, id, review)
-
-            .then(() =>
-                msgAlert({
-                    heading: 'Review Created',
-                    message: 'Thank you for your feedback!',
-                    variant: 'success',
-                }))
-
             .then(() => {
                 setUpdated(prev => !prev)
                 navigate(`/restaurants/${id}`); 

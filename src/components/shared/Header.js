@@ -57,8 +57,8 @@ const Header = ({ user }) => (
 		<Navbar.Collapse id='basic-navbar-nav' >
 			<Nav className='ml-auto m-2'>
 				{user && (
-					<span class="m-2">Welcome, {user.name}!<Link to={`profile/${user._id}`} className='ml-auto m-2' >
-					Profile
+					<span class="m-2">Welcome, {user.name}!<Link to={`profile/${user._id}`} className='ml-auto m-2' style={linkStyle} >
+					Your Profile
 		  		</Link></span>
 					
 				)

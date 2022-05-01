@@ -88,16 +88,20 @@ const IndexRestaurants = (props) => {
 
 return (
     <>
+    <div class='form'>
         <h1> Certified Fresh Restaurants of the Week </h1>
-        <div>
+        <div class ='form2'>
             {highlights}
         </div>
         <h1>All Restaurants in NYC</h1><br/>
-     
+   
+
+  
         <div class="scrollbar bordered-black square thin">
             <div class="force-overflow" style={style}>
             {restaurantCards}
             </div>
+        </div>
         </div>
     </>
     )
