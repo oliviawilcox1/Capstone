@@ -7,16 +7,9 @@ const CreateReview = (props) => {
     const { user, triggerRefresh, handleClose, msgAlert} = props
     const [review, setReview] = useState({})
     const [updated, setUpdated] = useState(false);
-    // name: '',
-    // image: '',
-    // description: '',
-    // price: '',
-    // available: false,
-    // category: ''
     const { id } = useParams()
-    console.log("ID", id)
     const navigate = useNavigate();
-
+    // console.log("ID", id)
 
     const handleChange = (e) => {
 
@@ -25,23 +18,25 @@ const CreateReview = (props) => {
         addUser()
 
         setReview(prevReview => {
+
             const name = e.target.name
             let value = e.target.value
 
-            if(e.target.type === 'number') {
+            if(e.target.type === 'number') 
+            {
                 value = parseInt(e.target.value)
             }
 
             const update = { [name]: value }
-            console.log(update)
+            // console.log(update)
             return {...prevReview, ...update}
-
-        })
-        
+        })  
     }
     
     console.log(review)
+
     const addUser = () => {
+
         setReview(prevReview => {
             const update = {'owner': user._id}
             return {...prevReview, ...update}
@@ -50,18 +45,21 @@ const CreateReview = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault ()
-        console.log('REVIEW',review)
+        // console.log('This is the Review',review)
         createReview(user, id, review)
+
             .then(() =>
-            msgAlert({
-                heading: 'Review Created',
-                message: 'Thank you for your feedback!',
-                variant: 'success',
-            }))
+                msgAlert({
+                    heading: 'Review Created',
+                    message: 'Thank you for your feedback!',
+                    variant: 'success',
+                }))
+
             .then(() => {
                 setUpdated(prev => !prev)
                 navigate(`/restaurants/${id}`); 
-              })
+            })
+
             .catch(() => 
                 msgAlert({
                     heading: 'Oh No!',
@@ -80,7 +78,6 @@ const CreateReview = (props) => {
             heading="Write Your Review"
         />
     )
-
 }
 
 export default CreateReview

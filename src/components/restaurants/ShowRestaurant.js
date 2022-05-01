@@ -29,121 +29,132 @@ const ShowRestaurant = (props) => {
    
     const display = () => {
        
-        if (user === null) {
+        if (user === null) 
+        {
             console.log('cant')
             setHidden(true)
-        } else {
-                console.log('FAV', user.favorites)
-                let faveArray = user.favorites  
-                for (const i in faveArray ) {
-                    console.log('favorite product id', faveArray[i]._id)
-                    console.log('Show product id',  id)
-                    if (faveArray[i]._id == id) {
-                    // console.log('Do not display favorite button')
-                        setHidden(true)
-                        return
-                    } else {
-                    // console.log('Display Favorite button')
-                        setHidden(false)
-                    }
-
-                return user
+        } 
+        else 
+        {
+            console.log('FAV', user.favorites)
+            let faveArray = user.favorites  
+            for (const i in faveArray ) {
+                console.log('favorite product id', faveArray[i]._id)
+                console.log('Show product id',  id)
+                if (faveArray[i]._id == id) 
+                {
+                    setHidden(true)
+                    return
+                } 
+                else 
+                {
+                    setHidden(false)
+                }
+            return user
+            }
         }
     }
-}
 
 
     useEffect(()=> {
+
         getOneRestaurant(id)
+
             .then((res)=> { 
                 setRestaurant(res.data.restaurant) 
                 display()
             })
+
             .catch(err => console.log(err))
+
         getAllReviews()
+
                 .then(res => {
                     console.log('res', res.data.reviews)
                     setReviews(res.data.reviews)
                     return reviews
                 })
+
                 .catch(err => {
                     console.log(err)
                 })
+
     }, [updated])
 
-    if (!restaurant) {
+
+    if (!restaurant) 
+    {
         return <p>Loading..</p>
     }
 
 
+    const handleClick = (e) => {
 
-const handleClick = (e) => {
-    // console.log('the restaurant to submit', restaurant)
-    // console.log('user',user.favorites)
-    createFavorite(user, user._id, restaurant)
-        // let favorite = user.favorites.push(restaurant)
-         setFavorite(user.favorites.push(restaurant)) 
-         setHidden(true)
-         console.log('user fav array', user.favorites)
-         return user
-  }
+        createFavorite(user, user._id, restaurant)
+    
+            setFavorite(user.favorites.push(restaurant)) 
+
+            setHidden(true)
+            // console.log('user fav array', user.favorites)
+            return user
+    }
 
 // THIS IS TO ONLY SHOW REVIEWS SPECIFIC TO RESTAURANT
-let reviewCards = []
-if(reviews != undefined ) {
-    for (const i in reviews ) {
-        console.log('reviews', reviews[i].restaurant._id)
-        console.log('Show product id',  id)
-        // console.log('Do not display favorite button')
-        console.log('review', reviews)
-        if (reviews[i].restaurant._id == id) {
-        reviewCards =  reviews.map(review => (
-            <ShowReviewModal
-                key={review._id} review={review} restaurant={restaurant} 
-                user={user} msgAlert={msgAlert}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                
-            />
-        ))
-        } else {
-            console.log('erg')
+    let reviewCards = []
+
+    if(reviews != undefined ) 
+    {
+        for (const i in reviews ) {
+            // console.log('reviews', reviews[i].restaurant._id)
+            // console.log('Show product id',  id)
+            // console.log('review', reviews)
+            if (reviews[i].restaurant._id == id) 
+            {
+            reviewCards =  reviews.map(review => (
+
+                <ShowReviewModal
+                    key={review._id} review={review} restaurant={restaurant} 
+                    user={user} msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)} 
+                />
+                ))
+            } 
+            else 
+            {
+                console.log('The IDs dont match!')
+            }
         }
-    }
     }
 
 
 
     return (
         <>
-        <div style = {style}>
-            <h1>{restaurant.name}</h1>
-            <img src={`${restaurant.image}`} alt='' style={{ height: '400px', width: 'auto'}}/>
-        <div style={{ font: '12px'}}>
-            <p>Located at {restaurant.address}</p>
-            <p>{restaurant.visitors} visitors</p>
-            <p>{restaurant.cuisine}</p>
-            <p>{restaurant.rating}</p>
-         </div>
-            <div style={{ width: '550px', margin: 'auto'}}>
-                <h3>What to Expect:</h3>
-                <h4> {restaurant.description}</h4>
+            <div style = {style}>
+                
+                <h1>{restaurant.name}</h1>
+                <img src={`${restaurant.image}`} alt='' style={{ height: '400px', width: 'auto'}}/>
+
+                <div style={{ font: '13px'}}>
+                    <p>
+                        Located at {restaurant.address}<br/>
+                        {restaurant.visitors} visitors  <br/>
+                        {restaurant.cuisine} <br/>
+                        {restaurant.rating} 
+                    </p>
+                </div>
+
+                <div style={{ width: '50%', margin: 'auto', fontSize: '40px'}}>
+                        <h2>A Brief Description: </h2>
+                        <h6> {restaurant.description}</h6>
+                </div>
+
+                <button class ='btn'style={{ display: hidden ? 'none' : 'block'}} onClick={() => handleClick()}>Add to your Future Eats</button>
+                <h3> Reviews </h3>
+                <Link to={`/reviews/${id}`}>  <button> Add a Review </button>  </Link>
+                <p> {reviewCards}</p> 
+
             </div>
-            <button style={{ display: hidden ? 'none' : 'block'}} onClick={() => handleClick()}>Add to your Future Eats</button>
-            <h3> Reviews </h3>
-            <Link to={`/reviews/${id}`}>  <button> Add a Review </button>  </Link>
-            <p> {reviewCards}</p> 
-          
-            {/* <EditReview
-                reviews={reviews}
-                show={modalOpen}
-                user={user}
-                msgAlert={msgAlert}
-                triggerRefresh={() => setUpdated((prev) => !prev)}
-                updateReview={updateReview}
-                handleClose={() => setModalOpen(false)}
-            /> */}
-         
-        </div>
         </>
     )
 }
