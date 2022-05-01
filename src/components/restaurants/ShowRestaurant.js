@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useParams, useNavigate} from 'react-router-dom'
 import ShowReviewModal from '../reviews/ShowReview'
 import EditReview from '../reviews/EditReview'
-import { getAllReviews } from '../../api/reviews'
+import { getAllReviews, updateReview } from '../../api/reviews'
 import { createFavorite } from '../../api/restaurants'
 
 
@@ -19,6 +19,7 @@ const ShowRestaurant = (props) => {
     const [reviews, setReviews] = useState()
     const [hidden, setHidden] = useState(false)
     const [favorite, setFavorite] = useState(null)
+    const [modalOpen, setModalOpen] = useState(false);
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false);
     const { id } = useParams()
@@ -93,14 +94,15 @@ if(reviews != undefined ) {
     for (const i in reviews ) {
         console.log('reviews', reviews[i].restaurant._id)
         console.log('Show product id',  id)
-        if (reviews[i].restaurant._id == id) {
         // console.log('Do not display favorite button')
         console.log('review', reviews)
-        reviewCards = reviews.map(review => (
+        if (reviews[i].restaurant._id == id) {
+        reviewCards =  reviews.map(review => (
             <ShowReviewModal
                 key={review._id} review={review} restaurant={restaurant} 
                 user={user} msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
+                
             />
         ))
         } else {
@@ -130,6 +132,16 @@ if(reviews != undefined ) {
             <h3> Reviews </h3>
             <Link to={`/reviews/${id}`}>  <button> Add a Review </button>  </Link>
             <p> {reviewCards}</p> 
+          
+            {/* <EditReview
+                reviews={reviews}
+                show={modalOpen}
+                user={user}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated((prev) => !prev)}
+                updateReview={updateReview}
+                handleClose={() => setModalOpen(false)}
+            /> */}
          
         </div>
         </>

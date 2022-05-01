@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const ReviewForm = (props) => {
     const { user, id, review, handleChange, handleSubmit, heading } = props
-    console.log('USER', user)
+    // console.log('USER', review.owner._id)
     // const { id } = useParams()
 
     return (
@@ -27,9 +27,9 @@ const ReviewForm = (props) => {
                     name='review'
                     onChange={handleChange}
                 />
-                {/* <Link to ={`/restaurants/${id}`}> */}
+                {/* <Link to ={`/restaurants/${id}`}>  */}
                     <Button type='submit'>Submit</Button>
-                    {/* </Link> */}
+                     {/* </Link>  */}
             </Form>
 
         </Container>

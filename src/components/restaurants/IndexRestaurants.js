@@ -51,7 +51,7 @@ const IndexRestaurants = (props) => {
 
     let highlights
     if (restaurants.length > 0) {
-        highlights =  <div style ={{display: 'flex', flexDirection:'row', flexWrap: 'wrap', margin:'20px'}}>
+        highlights =  <div style ={{display: 'flex', flexDirection:'row', flexWrap: 'wrap', margin:'10px'}}>
         <div style={{ textAlign: 'center', margin:'auto'}}>
 
                 <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>

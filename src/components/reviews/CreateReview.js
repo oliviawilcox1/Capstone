@@ -6,6 +6,7 @@ import { useParams, useNavigate} from 'react-router-dom'
 const CreateReview = (props) => {
     const { user, triggerRefresh, handleClose, msgAlert} = props
     const [review, setReview] = useState({})
+    const [updated, setUpdated] = useState(false);
     // name: '',
     // image: '',
     // description: '',
@@ -14,6 +15,7 @@ const CreateReview = (props) => {
     // category: ''
     const { id } = useParams()
     console.log("ID", id)
+    const navigate = useNavigate();
 
 
     const handleChange = (e) => {
@@ -56,7 +58,10 @@ const CreateReview = (props) => {
                 message: 'Thank you for your feedback!',
                 variant: 'success',
             }))
-
+            .then(() => {
+                setUpdated(prev => !prev)
+                navigate(`/restaurants/${id}`); 
+              })
             .catch(() => 
                 msgAlert({
                     heading: 'Oh No!',
@@ -69,6 +74,7 @@ const CreateReview = (props) => {
         <ReviewForm
             review={review}
             id={id}
+            user={user}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             heading="Write Your Review"
