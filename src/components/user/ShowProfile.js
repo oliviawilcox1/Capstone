@@ -20,7 +20,7 @@ const ShowProfile = (props) => {
             futureEats = user.favorites.map(favorite => {
                 return <li>
                     <div key={favorite.id} style={{width: '700px', textAlign:'center'}}>
-                        <Link to={`/restaurants/${favorite._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite.name}</h2>
+                        <Link to={`/restaurants/${favorite._id}`}><h5 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite.name}</h5>
                         </Link>
                     </div>
                 </li>
@@ -30,7 +30,7 @@ const ShowProfile = (props) => {
         {
             futureEats = <li>
                 <div style={{width: '700px', textAlign:'center'}}> 
-                    <h6>See Restaurants You have Saved Here!</h6>
+                    <p>See Restaurants You have Saved Here!</p>
                 </div> 
             </li>
         }
@@ -43,17 +43,15 @@ const ShowProfile = (props) => {
             <div style={{width: '40%', textAlign:'left', display:'inline-block'}}>
                 <h1 style={{textAlign: 'left', margin: '20px', textDecoration: 'underline'}}> Your Profile </h1>
                 <img src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'alt="" style={{height: '300px', borderRadius: '35px', margin: '0 0 0 15px'}}/>
-                <h3 style={{margin: ' 25px'}}>Name: {user.name}</h3>
-                <h3 style={{margin: ' 25px'}}>Date Joined: {time}</h3>
+                <h4 style={{margin: ' 25px'}}>Name: {user.name}</h4>
+                <h4 style={{margin: ' 25px'}}>Date Joined: {time}</h4>
             </div>
 
-            <div style={{ textAlign:'right', display:'inline-block'}}>
-                <div>
-                    <h2 style={{textAlign: 'center', textDecoration: 'underline'}}> Future Eats </h2>
-                        <ul style={{textAlign: 'center'}} >
-                            {futureEats}
-                        </ul>
-                </div>
+            <div style={{ textAlign:'right', display:'inline-block'}} class='form'>
+                <h2 style={{textAlign: 'center', textDecoration: 'underline'}}> Future Eats </h2>
+                    <ul>
+                        {futureEats}
+                    </ul>
             </div>
         </>
     )

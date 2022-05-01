@@ -41,9 +41,11 @@ const IndexRestaurants = (props) => {
         restaurantCards = restaurants.map(restaurant => {
         return <div key={restaurant.id} style={{width: '700px', textAlign:'center'}}>
                     <Link to={`restaurants/${restaurant._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurant.name}</h2></Link>
-                    <p>{restaurant.rating} Stars </p>
-                    <p>{restaurant.visitors} Visitors </p>
-                    <p>Located at {restaurant.address}</p>
+                    <p>
+                        {restaurant.rating} Stars <br/>
+                        {restaurant.visitors} Visitors <br/>
+                        Located at {restaurant.address} <br/>
+                    </p>
                     <img src={`${restaurant.image}`} style={{ height: '350px', width: '550px'}}/>
                 </div>
         })
@@ -58,22 +60,28 @@ const IndexRestaurants = (props) => {
             <div style={{ textAlign: 'center', margin:'auto'}}>
                 <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>
                 <img src={`${restaurants[12].image}`} style={{ height:'300px', width: '300px'}} />
-                <p>{restaurants[12].rating} Stars </p>
-                <p>Located at {restaurants[12].address}</p>
+                <p>
+                    {restaurants[12].rating} Stars <br/>
+                    Located at {restaurants[12].address}
+                </p>
             </div>
                
             <div style={{ textAlign: 'center', margin:'auto'}}>
                 <Link to={`restaurants/${restaurants[6]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[6].name}</h3></Link>
                 <img src={`${restaurants[6].image}`} style={{ height:'300px',  width: '300px'}}/>
-                <p>{restaurants[6].rating} Stars </p>
-                <p>Located at {restaurants[6].address}</p>
+                <p>
+                    {restaurants[6].rating} Stars <br/>
+                    Located at {restaurants[6].address}
+                </p>
             </div>
 
             <div style={{ textAlign: 'center', margin:'auto'}}>
                 <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link>
                 <img src={`${restaurants[8].image}`} style={{ height:'300px', width: '300px'}}/>
-                <p>{restaurants[8].rating} Stars </p>
-                <p>Located at {restaurants[8].address}</p>
+                <p>
+                    {restaurants[8].rating} Stars <br/>
+                    Located at {restaurants[8].address}
+                </p>
             </div>
         </div>
     }

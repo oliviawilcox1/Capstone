@@ -130,12 +130,12 @@ const ShowRestaurant = (props) => {
 
     return (
         <>
-            <div style = {style}>
+            <div style = {style} class='form'>
                 
                 <h1>{restaurant.name}</h1>
                 <img src={`${restaurant.image}`} alt='' style={{ height: '400px', width: 'auto'}}/>
 
-                <div style={{ font: '13px'}}>
+                <div >
                     <p>
                         Located at {restaurant.address}<br/>
                         {restaurant.visitors} visitors  <br/>
@@ -149,9 +149,9 @@ const ShowRestaurant = (props) => {
                         <h6> {restaurant.description}</h6>
                 </div>
 
-                <button class ='btn'style={{ display: hidden ? 'none' : 'block'}} onClick={() => handleClick()}>Add to your Future Eats</button>
+                <button style={{ textAlign: 'center', display: hidden ? 'none' : 'block'}} onClick={() => handleClick()}>Add to your Future Eats</button>
                 <h3> Reviews </h3>
-                <Link to={`/reviews/${id}`}>  <button> Add a Review </button>  </Link>
+                <Link to={`/reviews/${id}`}>  <button > Add a Review </button>  </Link>
                 <p> {reviewCards}</p> 
 
             </div>

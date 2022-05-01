@@ -23,8 +23,8 @@ const SignOut = (props) => {
 
 	return (
 		<>
-            <div className='row'>
-                <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+            <div className='row' class ='form'>
+                <div style={{textAlign: 'center'}} >
                     <h2>Signing off?</h2>
                     <small>We look forward to welcoming you back!</small><br/>
                         <button onClick={onSignOut}>
