@@ -13,13 +13,6 @@ const SignOut = (props) => {
 
     const onSignOut = () => {
 		signOut(user)
-			.finally(() =>
-				msgAlert({
-					heading: 'Signed Out Successfully',
-					message: messages.signOutSuccess,
-					variant: 'success',
-				})
-			)
 			.finally(() => navigate('/'))
 			.finally(() => clearUser())
     }
