@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { getOneUser } from '../../api/profile'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { Container, Row, Col } from 'react-bootstrap'
 
 const ShowProfile = (props) => {
     const { user } = props
@@ -40,21 +41,27 @@ const ShowProfile = (props) => {
 
     return (
         <>
-            <div style={{ textAlign:'center', display:'inline-block'}}>
+        <Container>
+            <Row >
+                
+                <Col>
                 <h2 style={{ textDecoration: 'underline'}}> Your Profile </h2>
                 <img src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'alt="" style={{height: '300px', borderRadius: '35px', margin: '0 0 0 15px'}}/>
                 <h4 style={{margin: ' 25px'}}>Name: {user.name}</h4>
                 <h4 style={{margin: ' 25px'}}>Date Joined: {time}</h4>
-            </div>
-
-            <div style={{ textAlign:'right', display:'inline-block'}} class='form'>
+         
+            </Col>
+            <Col >
                 <h2 style={{textAlign: 'center', textDecoration: 'underline'}}> Future Eats </h2>
                     <ul>
                         {futureEats}
                     </ul>
-            </div>
+            </Col>
+            </Row>
+        </Container>
         </>
     )
 }
 
+// style={{ textAlign:'right', display:'inline-block'}} 
 export default ShowProfile

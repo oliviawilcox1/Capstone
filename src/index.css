@@ -85,7 +85,9 @@ button:hover{
   box-shadow: -0.5em .5em (white,1);
   transform-origin: left bottom;
 }
-
+ li{
+   list-style: none;
+ }
 
 .force-overflow {
   display: flex;
