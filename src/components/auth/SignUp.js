@@ -60,10 +60,10 @@ const SignUp = (props) => {
     return (
         <div className='row' class='form'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign Up</h3>
+                <h3 style={{textAlign: 'center'}}class = 'form2'>Sign Up</h3>
                 <Form  onSubmit={onSignUp}>
                     <Form.Group controlId='email'>
-                        <Form.Label>Your Email Address</Form.Label>
+                        <Form.Label></Form.Label>
                         <Form.Control
                             required
                             type='email'
@@ -75,7 +75,7 @@ const SignUp = (props) => {
                     </Form.Group>
 
                     <Form.Group controlId='name'>
-                        <Form.Label>Your First Name</Form.Label>
+                        <Form.Label></Form.Label>
                         <Form.Control
                             required
                             type='name'
@@ -87,7 +87,7 @@ const SignUp = (props) => {
                     </Form.Group>
 
                     <Form.Group controlId='password'>
-                        <Form.Label>Your Password</Form.Label>
+                        <Form.Label></Form.Label>
                         <Form.Control
                             required
                             name='password'
@@ -98,7 +98,7 @@ const SignUp = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='passwordConfirmation'>
-                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Label></Form.Label>
                         <Form.Control
                             required
                             name='passwordConfirmation'
@@ -108,9 +108,12 @@ const SignUp = (props) => {
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
                     </Form.Group>
+                    <br/>
+                    <div style={{textAlign:'center'}}>
                     <button type='submit'>
                         Submit
                     </button>
+                    </div>
                 </Form>
             </div>
         </div>

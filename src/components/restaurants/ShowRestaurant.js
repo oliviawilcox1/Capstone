@@ -59,26 +59,21 @@ const ShowRestaurant = (props) => {
     useEffect(()=> {
 
         getOneRestaurant(id)
-
             .then((res)=> { 
                 setRestaurant(res.data.restaurant) 
                 display()
             })
-
             .catch(err => console.log(err))
 
         getAllReviews()
-
                 .then(res => {
                     console.log('res', res.data.reviews)
                     setReviews(res.data.reviews)
                     return reviews
                 })
-
                 .catch(err => {
                     console.log(err)
                 })
-
     }, [updated])
 
 

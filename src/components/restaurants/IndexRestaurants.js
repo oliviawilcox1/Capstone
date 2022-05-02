@@ -42,7 +42,7 @@ const IndexRestaurants = (props) => {
         return <div key={restaurant.id} style={{width: '700px', textAlign:'center'}}>
                     <Link to={`restaurants/${restaurant._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurant.name}</h2></Link>
                     <p>
-                        {restaurant.rating} Stars <br/>
+                        {(restaurant.rating).toFixed(1)} Stars <br/>
                         {restaurant.visitors} Visitors <br/>
                         Located at {restaurant.address} <br/>
                     </p>
@@ -61,7 +61,7 @@ const IndexRestaurants = (props) => {
                 <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>
                 <img src={`${restaurants[12].image}`} style={{ height:'300px', width: '300px'}} />
                 <p>
-                    {restaurants[12].rating} Stars <br/>
+                    {(restaurants[12].rating).toFixed(1)} Stars <br/>
                     Located at {restaurants[12].address}
                 </p>
             </div>
@@ -70,7 +70,7 @@ const IndexRestaurants = (props) => {
                 <Link to={`restaurants/${restaurants[6]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[6].name}</h3></Link>
                 <img src={`${restaurants[6].image}`} style={{ height:'300px',  width: '300px'}}/>
                 <p>
-                    {restaurants[6].rating} Stars <br/>
+                    {(restaurants[6].rating).toFixed(1)} Stars <br/>
                     Located at {restaurants[6].address}
                 </p>
             </div>
@@ -79,7 +79,7 @@ const IndexRestaurants = (props) => {
                 <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link>
                 <img src={`${restaurants[8].image}`} style={{ height:'300px', width: '300px'}}/>
                 <p>
-                    {restaurants[8].rating} Stars <br/>
+                    {(restaurants[8].rating).toFixed(1)} Stars <br/>
                     Located at {restaurants[8].address}
                 </p>
             </div>
