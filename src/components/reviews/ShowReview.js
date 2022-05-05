@@ -35,12 +35,12 @@ const ShowReviewModal = (props) => {
                             
                             ?
                                 <>
-                                    <Button variant="warning" onClick={() => setShowEditModal(true)}>
+                                    <button variant="warning" onClick={() => setShowEditModal(true)}>
                                         Edit Review
-                                    </Button>
-                                    <Button onClick={() => destroyReview()} >
+                                    </button>
+                                    <button onClick={() => destroyReview()} >
                                         Delete Review
-                                    </Button>
+                                    </button>
                                 </>
                             :
                             null
