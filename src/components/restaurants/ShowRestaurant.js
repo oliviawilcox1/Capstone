@@ -135,7 +135,7 @@ const ShowRestaurant = (props) => {
                         Located at {restaurant.address}<br/>
                         {restaurant.visitors} visitors  <br/>
                         {restaurant.cuisine} <br/>
-                        {restaurant.rating} 
+                        {(restaurant.rating).toFixed(1)} 
                     </p>
                 </div>
 
