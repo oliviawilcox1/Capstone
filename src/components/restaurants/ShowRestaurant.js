@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import ScrollToTop from 'react-scroll-to-top'
 import { getOneRestaurant } from '../../api/restaurants'
 import { Link } from 'react-router-dom'
 import { useParams, useNavigate} from 'react-router-dom'
@@ -11,7 +12,11 @@ import { createFavorite } from '../../api/restaurants'
 const style = {
     textAlign: 'center'
 }
-
+const style2 = {
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '15px'
+}
 
 const ShowRestaurant = (props) => {
     const { user, msgAlert } = props;
@@ -127,7 +132,7 @@ const ShowRestaurant = (props) => {
     return (
         <>
             <div style = {style} class='form'>
-                
+            <ScrollToTop style={style2}/>
                 <h1>{restaurant.name}</h1>
                 <img src={`${restaurant.image}`} alt='' style={{ height: '400px', width: 'auto'}}/>
 
