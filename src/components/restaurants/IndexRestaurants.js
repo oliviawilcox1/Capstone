@@ -67,11 +67,11 @@ const IndexRestaurants = (props) => {
             </div>
                
             <div style={{ textAlign: 'center', margin:'auto'}}>
-                <Link to={`restaurants/${restaurants[6]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[6].name}</h3></Link>
-                <img src={`${restaurants[6].image}`} style={{ height:'300px',  width: '300px'}}/>
+                <Link to={`restaurants/${restaurants[25]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[25].name}</h3></Link>
+                <img src={`${restaurants[25].image}`} style={{ height:'300px',  width: '300px'}}/>
                 <p>
-                    {(restaurants[6].rating).toFixed(1)} Stars <br/>
-                    Located at {restaurants[6].address}
+                    {(restaurants[25].rating).toFixed(1)} Stars <br/>
+                    Located at {restaurants[25].address}
                 </p>
             </div>
 

@@ -94,30 +94,32 @@ const ShowRestaurant = (props) => {
             return user
     }
 
+
 // THIS IS TO ONLY SHOW REVIEWS SPECIFIC TO RESTAURANT
     let reviewCards = []
 
-    if(reviews != undefined ) 
-    {
-        for (const i in reviews ) {
-            // console.log('reviews', reviews[i].restaurant._id)
-            // console.log('Show product id',  id)
-            // console.log('review', reviews)
-            if (reviews[i].restaurant._id == id) 
-            {
-            reviewCards =  reviews.map(review => (
+    if(reviews != undefined) 
 
-                <ShowReviewModal
-                    key={review._id} review={review} restaurant={restaurant} 
-                    user={user} msgAlert={msgAlert}
-                    triggerRefresh={() => setUpdated(prev => !prev)} 
-                />
-                ))
-            } 
-            else 
-            {
-                console.log('The IDs dont match!')
-            }
+    {
+            for (const i in reviews ) {
+                console.log('reviews', reviews[i].restaurant._id)
+                console.log('Show product id',  id)
+                console.log('review', reviews)
+                if (reviews[i].restaurant._id == id) 
+                {
+                reviewCards =  reviews.map(review => (
+    
+                    <ShowReviewModal
+                        key={review._id} review={review} restaurant={restaurant} 
+                        user={user} msgAlert={msgAlert}
+                        triggerRefresh={() => setUpdated(prev => !prev)} 
+                    />
+                    ))
+                } 
+                else 
+                {
+                    console.log('The IDs dont match!')
+                }
         }
     }
 
@@ -135,13 +137,22 @@ const ShowRestaurant = (props) => {
                         Located at {restaurant.address}<br/>
                         {restaurant.visitors} visitors  <br/>
                         {restaurant.cuisine} <br/>
-                        {(restaurant.rating).toFixed(1)} 
+                        {(restaurant.rating).toFixed(1)} <br/>
+                    
                     </p>
                 </div>
 
                 <div class='form2' style={{ width: '50%', margin: 'auto', fontSize: '40px'}}>
                         <h2>A Brief Description: </h2>
                         <h6> {restaurant.description}</h6>
+                        <p>
+                            <button style={{margin: '15px'}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16" >
+                                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                            </svg> 
+                            &nbsp;{' '}{restaurant.number} 
+                            </button><br/>
+                        </p>
                 </div>
                 <br/>
                 <button style={{margin: '15px', display: hidden ? 'none' : 'inline'}} onClick={() => handleClick()}>Add to your Future Eats</button>
