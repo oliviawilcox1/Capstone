@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import ScrollToTop from 'react-scroll-to-top'
 import { getAllRestaurants } from '../../api/restaurants'
 import {Link, useNavigate } from 'react-router-dom'
 
@@ -9,6 +10,11 @@ const style = {
     justifyContent: 'center',
     flexWrap: 'wrap',
     margin: '20px'
+}
+const style2 = {
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '15px'
 }
 
 const IndexRestaurants = (props) => {
@@ -99,6 +105,7 @@ return (
   
         <div class="scrollbar bordered-black square thin">
             <div class="force-overflow" style={style}>
+            <ScrollToTop style={style2}/>
             {restaurantCards}
             </div>
         </div>

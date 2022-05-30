@@ -55,7 +55,6 @@ const ShowRestaurant = (props) => {
         }
     }
 
-
     useEffect(()=> {
 
         getOneRestaurant(id)
