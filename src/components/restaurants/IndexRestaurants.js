@@ -71,13 +71,13 @@ const IndexRestaurants = (props) => {
                     alt="First Restaurant"
                     style={{ height:'450px', width: '600px'}}
                     />
-                <Carousel.Caption>
-                    <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>
-                    <p> 
-                        {(restaurants[12].rating).toFixed(1)} Stars <br/>
-                        Located at {restaurants[12].address}
-                    </p>
-                </Carousel.Caption>
+                    <Carousel.Caption>
+                        <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>
+                        <p> 
+                            {(restaurants[12].rating).toFixed(1)} Stars <br/>
+                            Located at {restaurants[12].address}
+                        </p>
+                    </Carousel.Caption>
                 </Carousel.Item>
 
                 <Carousel.Item>
@@ -87,13 +87,13 @@ const IndexRestaurants = (props) => {
                     alt="Second slide"
                     style={{ height:'450px',  width: '600px'}}
                     />
-                <Carousel.Caption>
-                    <Link to={`restaurants/${restaurants[5]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h3></Link>
-                    <p>   
-                        {(restaurants[5].rating).toFixed(1)} Stars <br/>
-                        Located at {restaurants[5].address}
-                    </p>
-                </Carousel.Caption>
+                    <Carousel.Caption>
+                        <Link to={`restaurants/${restaurants[5]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h3></Link>
+                        <p>   
+                            {(restaurants[5].rating).toFixed(1)} Stars <br/>
+                            Located at {restaurants[5].address}
+                        </p>
+                    </Carousel.Caption>
                 </Carousel.Item>
 
                 <Carousel.Item>
@@ -105,43 +105,43 @@ const IndexRestaurants = (props) => {
                     />
 
                     <Carousel.Caption>
-                    <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link>
-                    <p>
-                        {(restaurants[8].rating).toFixed(1)} Stars <br/>
-                        Located at {restaurants[8].address}
-                    </p>
+                        <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link>
+                        <p>
+                            {(restaurants[8].rating).toFixed(1)} Stars <br/>
+                            Located at {restaurants[8].address}
+                        </p>
                     </Carousel.Caption>
                 </Carousel.Item>
-                </Carousel>
-
-
-            {/* <div style={{ textAlign: 'center', margin:'auto'}}> */}
-                {/* <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link> */}
-                {/* <img src={`${restaurants[12].image}`} style={{ height:'300px', width: '300px'}} /> */}
-                {/* <p>
-                    {(restaurants[12].rating).toFixed(1)} Stars <br/>
-                    Located at {restaurants[12].address}
-                </p> */}
-            {/* </div> */}
-               
-            {/* <div style={{ textAlign: 'center', margin:'auto'}}> */}
-                {/* <Link to={`restaurants/${restaurants[5]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h3></Link>
-                <img src={`${restaurants[5].image}`} style={{ height:'300px',  width: '300px'}}/>
-                <p>
-                    {(restaurants[5].rating).toFixed(1)} Stars <br/>
-                    Located at {restaurants[5].address}
-                </p> */}
-            {/* </div> */}
-
-            {/* <div style={{ textAlign: 'center', margin:'auto'}}> */}
-                {/* <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link> */}
-                {/* <img src={`${restaurants[8].image}`} style={{ height:'300px', width: '300px'}}/>
-                <p> */}
-                    {/* {(restaurants[8].rating).toFixed(1)} Stars <br/>
-                    Located at {restaurants[8].address} */}
-                {/* </p> */}
-            {/* </div> */}
+            </Carousel>
         </div>
+
+            // {/* <div style={{ textAlign: 'center', margin:'auto'}}> */}
+            //     {/* <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link> */}
+            //     {/* <img src={`${restaurants[12].image}`} style={{ height:'300px', width: '300px'}} /> */}
+            //     {/* <p>
+            //         {(restaurants[12].rating).toFixed(1)} Stars <br/>
+            //         Located at {restaurants[12].address}
+            //     </p> */}
+            // {/* </div> */}
+               
+            // {/* <div style={{ textAlign: 'center', margin:'auto'}}> */}
+            //     {/* <Link to={`restaurants/${restaurants[5]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h3></Link>
+            //     <img src={`${restaurants[5].image}`} style={{ height:'300px',  width: '300px'}}/>
+            //     <p>
+            //         {(restaurants[5].rating).toFixed(1)} Stars <br/>
+            //         Located at {restaurants[5].address}
+            //     </p> */}
+            // {/* </div> */}
+
+            // {/* <div style={{ textAlign: 'center', margin:'auto'}}> */}
+            //     {/* <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link> */}
+            //     {/* <img src={`${restaurants[8].image}`} style={{ height:'300px', width: '300px'}}/>
+            //     <p> */}
+            //         {/* {(restaurants[8].rating).toFixed(1)} Stars <br/>
+            //         Located at {restaurants[8].address} */}
+            //     {/* </p> */}
+            // {/* </div> */}
+       
     }
 
 return (
