@@ -15,7 +15,10 @@ const ShowProfile = (props) => {
 
     let time = user.createdAt.toString().slice(0,10)  
            console.log("date",time)
-          
+
+    const date = new Date(time).toDateString().slice(3,10)
+    const year = new Date(time).toDateString().slice(10,15)
+    console.log(date)
     
     let futureEats
     // console.log(user)
@@ -48,17 +51,17 @@ const ShowProfile = (props) => {
         <>
             <Container>
                 <Row>
-                    <div style={{width: "50%", margin: 'auto'}}>
+                    <div  style={{width: "50%", margin: 'auto'}}>
                     <Col>
-                        <h2  style={{ textDecoration: 'underline', margin: '20px'}}> {user.name}'s Profile </h2>
+                        <h2 style={{ textDecoration: 'underline', margin: '20px'}}> {user.name}'s Profile </h2>
                         <img src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'alt="" style={{height: '300px', borderRadius: '35px'}}/>
                         {/* <h4 style={{margin: ' 25px'}}>Name: {user.name}</h4> */}
-                        <h4 style={{margin: ' 20px'}}>Date Joined: {time}</h4>
+                        <h4 style={{margin: ' 20px'}}>Date Joined: {date}th, {year}</h4>
                     </Col>
                     </div>
                     <div style={{width: "50%", textAlign: 'center', marginRight: '0px'}}>
                     <Col>
-                        <h2 style={{ textDecoration: 'underline'}}> Future Eats </h2>
+                        <h2 class='form'style={{ textDecoration: 'underline'}}> Future Eats </h2>
                             <ul >
                                 {futureEats}
                             </ul>
