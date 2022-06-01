@@ -62,14 +62,14 @@ const IndexRestaurants = (props) => {
     let highlights
     if (restaurants.length > 0) 
     {
-        highlights = <div style ={{display: 'flex', flexDirection:'row', flexWrap: 'wrap', margin:'10px', height:'300px',  width: '300px'}}>
+        highlights = <div style ={{display: 'flex', flexDirection:'row', flexWrap: 'wrap', margin:'10px', height:'450px',  width: '600px'}}>
             <Carousel fade>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
                     src={`${restaurants[12].image}`} 
                     alt="First Restaurant"
-                    // style={{ height:'300px', width: '300px'}}
+                    style={{ height:'450px', width: '600px'}}
                     />
                 <Carousel.Caption>
                     <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>
@@ -85,7 +85,7 @@ const IndexRestaurants = (props) => {
                     className="d-block w-100"
                     src={`${restaurants[5].image}`}
                     alt="Second slide"
-                    // style={{ height:'300px',  width: '300px'}}
+                    style={{ height:'450px',  width: '600px'}}
                     />
                 <Carousel.Caption>
                     <Link to={`restaurants/${restaurants[5]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h3></Link>
@@ -101,7 +101,7 @@ const IndexRestaurants = (props) => {
                     className="d-block w-100"
                     src={`${restaurants[8].image}`}
                     alt="Third slide"
-                    // style={{ height:'300px', width: '300px'}}
+                    style={{ height:'450px', width: '600px'}}
                     />
 
                     <Carousel.Caption>
