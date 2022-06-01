@@ -15,13 +15,16 @@ const authenticatedOptions = (
 				Change Password
 			</Link>
 		</Nav.Link> */}
-		<Nav.Link>
-			
+		<Nav.Link >
+			<Link to="/" style={linkStyle}>
+				Home
+			</Link> 
+		</Nav.Link>
+		<Nav.Link >
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
-		</Nav.Link>
-		
+		</Nav.Link>	
 	</>
 )
 
@@ -57,7 +60,7 @@ const Header = ({ user }) => (
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse className="ml-auto m-2 justify-content-end" id='basic-navbar-nav' >
 			
-			{user && ( <span class="m-2">Welcome, {user.name}!<Link to={`profile/${user._id}`} className='ml-auto m-2' style={linkStyle}>
+			{user && ( <span class="m-2">Welcome, {user.name}!{'  '}<Link to={`profile/${user._id}`} className='ml-auto m-2' style={linkStyle}>
 			Your Profile </Link></span> )}
 
 			
