@@ -85,6 +85,24 @@ button:hover{
   box-shadow: -0.5em .5em (white,1);
   transform-origin: left bottom;
 }
+.form3{
+  height: 100%;
+  width: 90%;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: 0.075em;
+  padding: .8em 1em;
+  margin: auto 2em;
+  position: relative;
+  align-self: center;
+  /* text-transform: uppercase; */
+  border: 3px black solid;
+  border-image: linear-gradient(rgb(222, 206, 244) 35%, rgb(123, 123, 206) 100%);
+  border-image-slice: 1 0 1 0;
+  /* z-index: 1; */
+  box-shadow: -0.5em .5em (white,1);
+  transform-origin: left bottom;
+}
  li{
    list-style: none;
    margin-top: 20px;

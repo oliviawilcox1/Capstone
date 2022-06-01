@@ -62,8 +62,9 @@ const IndexRestaurants = (props) => {
     let highlights
     if (restaurants.length > 0) 
     {
-        highlights = <div style ={{display: 'flex', flexDirection:'row', flexWrap: 'wrap', margin:'10px', height:'450px',  width: '600px'}}>
-            <Carousel fade>
+        highlights = <div style ={{display: 'flex', justifyContent: 'center', alignItems: "center", flexDirection:'row', flexWrap: 'wrap', margin:'10px', height:'500px', width: '650px'}}>
+
+            <Carousel fade variant="dark" >
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
@@ -71,14 +72,13 @@ const IndexRestaurants = (props) => {
                     alt="First Restaurant"
                     style={{ height:'450px', width: '600px'}}
                     />
+        
                     <Carousel.Caption>
-                        <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link>
-                        <p> 
-                            {(restaurants[12].rating).toFixed(1)} Stars <br/>
-                            Located at {restaurants[12].address}
-                        </p>
+                        <Link to={`restaurants/${restaurants[12]._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h2></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
+                
+                
 
                 <Carousel.Item>
                     <img
@@ -87,29 +87,23 @@ const IndexRestaurants = (props) => {
                     alt="Second slide"
                     style={{ height:'450px',  width: '600px'}}
                     />
+                    
                     <Carousel.Caption>
-                        <Link to={`restaurants/${restaurants[5]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h3></Link>
-                        <p>   
-                            {(restaurants[5].rating).toFixed(1)} Stars <br/>
-                            Located at {restaurants[5].address}
-                        </p>
+                        <Link to={`restaurants/${restaurants[5]._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h2></Link>
+                       
                     </Carousel.Caption>
                 </Carousel.Item>
 
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src={`${restaurants[8].image}`}
+                    src={`${restaurants[1].image}`}
                     alt="Third slide"
-                    style={{ height:'450px', width: '600px'}}
+                    style={{ height: '450px', width: '600px'}}
                     />
-
+                   
                     <Carousel.Caption>
-                        <Link to={`restaurants/${restaurants[8]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h3></Link>
-                        <p>
-                            {(restaurants[8].rating).toFixed(1)} Stars <br/>
-                            Located at {restaurants[8].address}
-                        </p>
+                        <Link to={`restaurants/${restaurants[8]._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h2></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
@@ -146,9 +140,10 @@ const IndexRestaurants = (props) => {
 
 return (
     <>
-    <div class='form'>
+    <div class='form'style={style}>
         <h1> Certified Fresh Restaurants of the Week </h1>
-        <div class ='form2'>
+        <h3 style={{textAlign: 'center'}}> Top Three Places To Try This Week </h3>
+        <div class ='form3' style={style}>
             {highlights}
         </div>
         <h1>All Restaurants in NYC</h1><br/>
