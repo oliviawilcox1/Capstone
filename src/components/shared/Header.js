@@ -54,13 +54,13 @@ const Header = ({ user }) => (
 	<Navbar bg='white' variant='dark' class="d-flex ">
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                VeganFest
+                VeganFoodie
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse className="ml-auto m-2 justify-content-end" id='basic-navbar-nav' >
 			
-			{user && ( <span class="m-2">Welcome, {user.name}!{'  '}<Link to={`profile/${user._id}`} className='ml-auto m-2' style={linkStyle}>
+			{user && ( <span class="m-2">Welcome, {user.name}!<Link to={`profile/${user._id}`} className='ml-auto m-2' style={linkStyle}>
 			Your Profile </Link></span> )}
 
 			

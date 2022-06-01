@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { getOneUser } from '../../api/profile'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+
 import { Container, Row, Col } from 'react-bootstrap'
 
 const ShowProfile = (props) => {
@@ -28,12 +29,13 @@ const ShowProfile = (props) => {
         if (user.favorites.length > 0) 
         {
             futureEats = user.favorites.map(favorite => {
-                return <li>
-                    <div key={favorite.id} >
-                        <Link to={`/restaurants/${favorite._id}`}><h5 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite.name}</h5>
-                        </Link>
-                    </div>
-                </li>
+            return <li>
+                <div key={favorite.id}>  
+                  <Link to={`/restaurants/${favorite._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{favorite.name} </h3>
+                    </Link>
+                   <aside> <button style={{fontSize: '10px'}}>X</button></aside>
+                </div>  
+           </li>
             })
         } 
         else 
