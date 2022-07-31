@@ -1,11 +1,12 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-
+// *********** Index Route for Reviews **************
 export const getAllReviews = () => {
     return axios(`${apiUrl}/reviews`)
 }
 
+// *********** Create Route for Reviews **************
 export const createReview = (user, id, newReview) => {
     return axios({
         url: `${apiUrl}/reviews/${id}`,
@@ -17,6 +18,7 @@ export const createReview = (user, id, newReview) => {
     })
 }
 
+// *********** Update Route for A Review **************
 export const updateReview = (user, updatedReview) => {
     return axios ({
         url: `${apiUrl}/reviews/${updatedReview._id}`,
@@ -28,6 +30,7 @@ export const updateReview = (user, updatedReview) => {
     })
 }
 
+// *********** Delete Route for A Review **************
 export const deleteReview = (user, reviewId) => {
     return axios({
         url: `${apiUrl}/reviews/${reviewId}`,

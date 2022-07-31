@@ -1,6 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// *********** POST Route for Signing Up  **************
 export const signUp = (credentials) => {
 	return axios({
 		method: 'POST',
@@ -16,6 +17,7 @@ export const signUp = (credentials) => {
 	})
 }
 
+// *********** POST Route for Signing In **************
 export const signIn = (credentials) => {
 	return axios({
 		url: apiUrl + '/sign-in',
@@ -29,6 +31,7 @@ export const signIn = (credentials) => {
 	})
 }
 
+// *********** DELETE Route for Signing Out **************
 export const signOut = (user) => {
 	return axios({
 		url: apiUrl + '/sign-out',
@@ -39,6 +42,7 @@ export const signOut = (user) => {
 	})
 }
 
+// *********** UPDATE Route for Password **************
 export const changePassword = (passwords, user) => {
 	return axios({
 		url: apiUrl + '/change-password',

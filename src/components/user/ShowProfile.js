@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { getOneUser } from '../../api/profile'
-import { useParams } from 'react-router-dom'
+// import { getOneUser } from '../../api/profile'
 import { Link } from 'react-router-dom'
 
 import { Container, Row, Col } from 'react-bootstrap'
