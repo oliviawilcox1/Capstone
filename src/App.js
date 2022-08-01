@@ -21,22 +21,25 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
-  console.log('user in app', user)
-  console.log('message alerts', msgAlerts)
+//   Sets User to Null when user logs out
   const clearUser = () => {
     console.log('clear user ran')
     setUser(null)
   }
 
+// Delete function passed to Auto dismiss Alert Component
 	const deleteAlert = (id) => {
 		setMsgAlerts((prevState) => {
 			return (prevState.filter((msg) => msg.id !== id) )
 		})
 	}
 
+	// Sets Message Alerts 
 	const msgAlert = ({ heading, message, variant }) => {
+		// creates unique id identified
 		const id = uuid()
 		setMsgAlerts(() => {
+			// set message alert with params 
 			return (
 				[{ heading, message, variant, id }]
       )
@@ -45,30 +48,36 @@ const App = () => {
 
 		return (
 			<Fragment>
+				{/* Header Component */}
 				<Header user={user} />
 				
 				<Routes>
+					{/* Home Component */}
 					<Route path='/' element={
 						<Home msgAlert={msgAlert} user={user} />}
 					/>
+					{/* Sign Up Component */}
 					<Route
 						path='/sign-up'
 						element={
 							<SignUp msgAlert={msgAlert} setUser={setUser} 
 						/>}
 					/>
+					{/* Sign In Component */}
 					<Route
 						path='/sign-in'
 						element={
 							<SignIn msgAlert={msgAlert} setUser={setUser} 
 						/>}
 					/>
+					{/* Show Restaurant Component */}
 					<Route 
 						path="restaurants/:id"
 						element={
 							<ShowRestaurant user ={user} 
 						/>}
 					/>
+					{/* ShowPorfile Component */}
 					<Route 
 						path="profile/:id"
 						element={
@@ -76,6 +85,7 @@ const App = () => {
 							<ShowProfile user ={user} />
 						</RequireAuth>}
 					/>
+					{/* Sign Out Component */}
 					<Route
 						path='/sign-out'
 						element={
@@ -84,6 +94,7 @@ const App = () => {
 						</RequireAuth>
 						}
 					/>
+					{/* Change Password Component  */}
 					<Route
 						path='/change-password'
 						element={
@@ -91,18 +102,19 @@ const App = () => {
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 					/>
+					{/* Create Review Component */}
 					<Route 
 						path='/reviews/:id'
 						element={
 							<RequireAuth user={user}>
 								<CreateReview msgAlert={msgAlert} user={user}/>
 							</RequireAuth>
-							
 						}
 					/>
 					</Routes>
-
+					{/* Map across Message alerts to pass to auto dismiss alert which mounts and unmounts the alert */}
 					{msgAlerts.map((msgAlert) => (
+						// define props passed down
 						<AutoDismissAlert
 							key={msgAlert.id}
 							heading={msgAlert.heading}

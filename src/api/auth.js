@@ -1,5 +1,9 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
+// Axios: Axios is a Javascript library used to make HTTP requests from node. js or XMLHttpRequests from the browser
+//  and it supports the Promise API that is native to JS ES6. 
+// It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. 
+// It also has the ability to cancel requests.
 
 // *********** POST Route for Signing Up  **************
 export const signUp = (credentials) => {
@@ -42,7 +46,7 @@ export const signOut = (user) => {
 	})
 }
 
-// *********** UPDATE Route for Password **************
+// *********** UPDATE Route for Password	 **************
 export const changePassword = (passwords, user) => {
 	return axios({
 		url: apiUrl + '/change-password',

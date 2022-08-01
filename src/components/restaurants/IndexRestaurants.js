@@ -4,14 +4,13 @@ import { getAllRestaurants } from '../../api/restaurants'
 import {Link, useNavigate } from 'react-router-dom'
 import { Carousel } from 'react-bootstrap'
 
-
-
 const style = {
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
     margin: '20px'
 }
+
 const style2 = {
     display: 'flex',
     justifyContent: 'center',
@@ -22,32 +21,34 @@ const IndexRestaurants = (props) => {
     const [restaurants, setRestaurants] = useState(null)
     const {msgAlert, user } = props
 
+    // Mount Component with UseEffect Hook 
     useEffect(()=> {
-
+        // Call Get Route to get all restaurants
         getAllRestaurants()
-
             .then(res => {
-                console.log('res', res)
+                // Update State and set restaurants as the res.data.restaurants
                 setRestaurants(res.data.restaurants)
             })
-
             .catch(err => {
                 console.log(err)
             })
     },[])
 
+    // If there are no restaurants 
     if(!restaurants) 
     {
         return <h1>Loading...</h1>
     } 
 
+    // Map through Restaurants if they are present and assign them to restaurant cards
     let restaurantCards 
-
     if (restaurants.length > 0)
     {
         restaurantCards = restaurants.map(restaurant => {
         return <div key={restaurant.id} style={{width: '700px', textAlign:'center'}}>
-                    <Link to={`restaurants/${restaurant._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurant.name}</h2></Link>
+                    <Link to={`restaurants/${restaurant._id}`}>
+                        <h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurant.name}</h2>
+                    </Link>
                     <p>
                         {(restaurant.rating).toFixed(1)} Stars <br/>
                         {restaurant.visitors} Visitors <br/>
@@ -58,12 +59,12 @@ const IndexRestaurants = (props) => {
         })
     }
 
-
+    // Assign Highlights to be shown
     let highlights
     if (restaurants.length > 0) 
     {
         highlights = <div style ={{display: 'flex', justifyContent: 'center', alignItems: "center", flexDirection:'row', flexWrap: 'wrap', margin:'10px', height:'500px', width: '650px'}}>
-
+            {/* Restaurant One  */}
             <Carousel fade variant="dark" >
                 <Carousel.Item>
                     <img
@@ -72,14 +73,12 @@ const IndexRestaurants = (props) => {
                     alt="First Restaurant"
                     style={{ height:'450px', width: '600px'}}
                     />
-        
                     <Carousel.Caption>
                         <Link to={`restaurants/${restaurants[12]._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h2></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
                 
-                
-
+            {/* Restaurant Two  */}
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
@@ -87,13 +86,12 @@ const IndexRestaurants = (props) => {
                     alt="Second slide"
                     style={{ height:'450px',  width: '600px'}}
                     />
-                    
                     <Carousel.Caption>
                         <Link to={`restaurants/${restaurants[5]._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[5].name}</h2></Link>
-                       
                     </Carousel.Caption>
                 </Carousel.Item>
 
+                {/* Restaurant Three  */}
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
@@ -101,7 +99,6 @@ const IndexRestaurants = (props) => {
                     alt="Third slide"
                     style={{ height: '450px', width: '600px'}}
                     />
-                   
                     <Carousel.Caption>
                         <Link to={`restaurants/${restaurants[8]._id}`}><h2 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[8].name}</h2></Link>
                     </Carousel.Caption>
@@ -109,6 +106,7 @@ const IndexRestaurants = (props) => {
             </Carousel>
         </div>
 
+// Previous Style
             // {/* <div style={{ textAlign: 'center', margin:'auto'}}> */}
             //     {/* <Link to={`restaurants/${restaurants[12]._id}`}><h3 style={{color: 'black', textDecorationLine: 'underline'}}>{restaurants[12].name}</h3></Link> */}
             //     {/* <img src={`${restaurants[12].image}`} style={{ height:'300px', width: '300px'}} /> */}
@@ -143,20 +141,20 @@ return (
     <div class='form'style={style}>
         <h1> Certified Fresh Restaurants of the Week </h1>
         <h3 style={{textAlign: 'center'}}> Top Three Places To Try This Week </h3>
-        <div class ='form3' style={style}>
-            {highlights}
-        </div>
+        {/* Highlighs Here */}
+            <div class ='form3' style={style}>
+                {highlights}
+            </div>
         <h1>All Restaurants in NYC</h1><br/>
-   
-
   
         <div class="scrollbar bordered-black square thin">
             <div class="force-overflow" style={style}>
-            <ScrollToTop style={style2}/>
-            {restaurantCards}
+                <ScrollToTop style={style2}/>
+                {/* All restaurants */}
+                {restaurantCards}
             </div>
         </div>
-        </div>
+    </div>
     </>
     )
 }

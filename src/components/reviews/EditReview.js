@@ -7,21 +7,21 @@ const EditReview = (props) => {
   const {user, restaurant, show, handleClose, triggerRefresh, msgAlert, setModalOpen} = props
   const [review, setReview] = useState(props.review)
 
+  // Function to handle user continuing to type 
   const handleChange = (e) => {
-
     e.persist()
-
+    // Set State and new review to updated value 
     setReview((prevReview)=> {
       const name = e.target.name
       let value = e.target.value
-
+      // If the type is a number set it to a string 
       if (e.target.type === 'number') 
       {
         value = parseInt(e.target.value)
       }
-    
+      // Set Updated Value at correct key 
       const updatedValue = { [name]: value }
-      // console.log('UPDATED VALUE', updatedValue)
+      // return the updated review 
       return { ...prevReview, ...updatedValue };
     })
   }
@@ -30,8 +30,9 @@ const EditReview = (props) => {
   const handleSubmit =(e)=> {
     
       e.preventDefault()
-
+      // Update Route Called with user and review passed in 
       updateReview(user,review)
+      // handle close and refresh 
         .then(()=> handleClose())
         .then(() => triggerRefresh())
         .catch((err) => console.log(err))

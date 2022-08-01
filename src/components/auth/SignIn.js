@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignIn = (props) => {
+    // For reference for React before Hooks
 	// constructor(props) {
 	// 	super(props)
 
@@ -18,22 +19,24 @@ const SignIn = (props) => {
 	// }
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
     const navigate = useNavigate()
 
+    // For reference 
 	// handleChange = (event) =>
 	// 	this.setState({
 	// 		[event.target.name]: event.target.value,
 	// 	})
 
+
+    // Sign In Function to be called on form submission 
 	const onSignIn = (event) => {
+        // allows user to type and prevents default 
 		event.preventDefault()
-        console.log('the props', props)
 		const { msgAlert, setUser } = props
-
         const credentials = {email, password}
-
+        // Sign In Route called with credentials passed in 
 		signIn(credentials)
+        // if successful set user with data 
 			.then((res) => setUser(res.data.user))
 			// .then(() =>
 			// 	msgAlert({
@@ -43,6 +46,7 @@ const SignIn = (props) => {
 			// 	})
 			// )
 			.then(() => navigate('/'))
+            // else re-set state and send error message alert 
 			.catch((error) => {
                 setEmail('')
                 setPassword('')

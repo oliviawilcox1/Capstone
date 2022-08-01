@@ -3,11 +3,13 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+
 const linkStyle = {
     color: 'black',
     textDecoration: 'none'
 }
 
+// Signed In 
 const authenticatedOptions = (
 	<>
 		{/* <Nav.Link>
@@ -28,6 +30,7 @@ const authenticatedOptions = (
 	</>
 )
 
+// Not Signed In 
 const unauthenticatedOptions = (
 	<>
         <Nav.Link >
@@ -49,6 +52,7 @@ const unauthenticatedOptions = (
 // 	</>
 // )
 
+
 const Header = ({ user }) => (
 
 	<Navbar bg='white' variant='dark' class="d-flex ">
@@ -59,17 +63,13 @@ const Header = ({ user }) => (
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse className="ml-auto m-2 justify-content-end" id='basic-navbar-nav' >
-			
+			{/* if user is true show welcome {user.name} with link to their profile */}
 			{user && ( <span class="m-2">Welcome, {user.name}!<Link to={`profile/${user._id}`} className='ml-auto m-2' style={linkStyle}>
 			Your Profile </Link></span> )}
-
-			
 		</Navbar.Collapse>
-		
 		{/* {alwaysOptions} */}
+		{/* if user is true show auth options else show unauth options */}
 		{user ? authenticatedOptions : unauthenticatedOptions}
-
-
 	</Navbar>
 )
 

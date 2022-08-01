@@ -7,46 +7,46 @@ const ShowReviewModal = (props) => {
     const {user, review, restaurant, triggerRefresh, id, msgAlert} = props
     const [showEditModal, setShowEditModal]= useState(false)
 
+    // Delete Review Function Called on Delete Review Button 
     const destroyReview = () => {
-        // console.log('DESTROYING REVIEW')
-        // console.log('REVIEW: ', review._id)
+        // Helpful to double check you are deleting the correct review 
+        // console.log('DESTROYING REVIEW', review._id)
+        // Delete Review Route Called 
         deleteReview(user, review._id)
+            // then console log successful 
             .then(()=> console.log('Success'))
             .then(() => triggerRefresh())
+            // console log errors if .then is not succesful 
             .catch((error) => console.log(error))
     }
 
     let cards
-    // console.log('USER ID',user._id)
-
     for (const i in review) {
-
+        // for each review object in review array 
         if (review.restaurant_id == id) 
+        // if the review restaurant id matches the id in the show page which is the restaurant id then show that restaurants reviews 
         {
-            // console.log('RESTAURANT ID',review.restaurant._id)
             return (
+                // set cards as JSX Element to return review cards 
                 cards =  <>
                 <Card className="m-2">
                     <Card.Header >Rating: {review.rating}</Card.Header>
-                    <Card.Body >
-                        <small>{review.review}</small><br/>
-                        {
-                            user && (user._id === review.owner._id) 
-                            
-                            ?
-                                <>
-                                    <button variant="warning" onClick={() => setShowEditModal(true)}>
-                                        Edit Review
-                                    </button>
-                                    <button onClick={() => destroyReview()} >
-                                        Delete Review
-                                    </button>
-                                </>
-                            :
-                            null
+                    <Card.Body> <small>{review.review}</small> <br/>
+                        {/* Ternary Operator */}
+                        {/* If there is a user and the user id matches the review owner id */}
+                        { user && (user._id === review.owner._id) ?
+                            <>
+                                {/* Then allow them to edit and delete their own review */}
+                                <button variant="warning" onClick={() => setShowEditModal(true)}> Edit Review </button>
+                                <button onClick={() => destroyReview()}> Delete Review </button>
+                            </>
+                            // else 
+                            : null
                         }
                     </Card.Body>
                 </Card>
+
+                {/* Pass Props and Functions */}
                 <EditReview
                     user={user}
                     restaurant={restaurant}
@@ -61,10 +61,10 @@ const ShowReviewModal = (props) => {
         }
     }
 
-return (
-    <>
-        {cards}
-    </>
+    return (
+        <>
+            {cards}
+        </>
     )
 }
 

@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignUp = (props) => {
+    // For reference - before hooks 
 	// constructor(props) {
 	// 	super(props)
 
@@ -22,20 +23,23 @@ const SignUp = (props) => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [name, setName] = useState('')
-
     const navigate = useNavigate()
 
+    // Function to be called on Form Submission 
 	const onSignUp = (event) => {
 		event.preventDefault()
-
+        // prevents default and allows user to continue filling out text
 		const { msgAlert, setUser } = props
-
         const credentials = {email, name, password, passwordConfirmation}
 
+        // Hits sign Up route with credentials 
 		signUp(credentials)
+        // if successful signs in 
 			.then(() => signIn(credentials))
+            // then sets user and user.data
 			.then((res) => setUser(res.data.user))
 			.then(() =>
+            // alerts successful 
 				msgAlert({
 					heading: 'Sign Up Success',
 					message: messages.signUpSuccess,
@@ -43,6 +47,7 @@ const SignUp = (props) => {
 				})
 			)
 			.then(() => navigate('/'))
+            // if error reset state and send error
 			.catch((error) => {
                 setEmail('')
                 setName('')

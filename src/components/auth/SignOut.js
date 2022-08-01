@@ -5,18 +5,18 @@ import {Button, ButtonGroup} from 'react-bootstrap'
 import { signOut } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
+
 const SignOut = (props) => {
 	const { msgAlert, clearUser, user } = props
-    console.log(props)
-
     const navigate = useNavigate()
-
+    // function called in form submission 
     const onSignOut = () => {
 		signOut(user)
+        // calls delete route to sign out user
 			.finally(() => navigate('/'))
 			.finally(() => clearUser())
     }
-
+    // function called if cancel button clicked 
     const onCancel = () => {
         navigate('/')
     }

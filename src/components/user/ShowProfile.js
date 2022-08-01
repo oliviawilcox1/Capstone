@@ -6,27 +6,26 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 const ShowProfile = (props) => {
     const { user } = props
-  
     const style = {
         display: 'flex',
         width: "50%",
   
     }
 
+    // To get the date joined of the user slice the created at data then turn it into a date then string then slice accordingly
     let time = user.createdAt.toString().slice(0,10)  
-           console.log("date",time)
-
     const date = new Date(time).toDateString().slice(3,10)
     const year = new Date(time).toDateString().slice(10,15)
-    console.log(date)
     
+    // if there is a user then log their favorites
     let futureEats
-    // console.log(user)
     if(user) 
     {
         console.log(user.favorites)
+        // if their favorites array is not empty
         if (user.favorites.length > 0) 
         {
+            // map over the favorites array to return each restaurant info in their favorites
             futureEats = user.favorites.map(favorite => {
             return <li>
                 <div key={favorite.id}>  
@@ -37,6 +36,7 @@ const ShowProfile = (props) => {
            </li>
             })
         } 
+        // else if there are no favorites
         else 
         {
             futureEats = <li>
@@ -56,8 +56,7 @@ const ShowProfile = (props) => {
                     <Col>
                         <h2 style={{ textDecoration: 'underline', margin: '20px'}}> {user.name}'s Profile </h2>
                         <img src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'alt="" style={{height: '300px', borderRadius: '35px'}}/>
-                        {/* <h4 style={{margin: ' 25px'}}>Name: {user.name}</h4> */}
-                        <h4 style={{margin: ' 20px'}}>Date Joined: {date}th, {year}</h4>
+                        <h4 style={{margin: ' 20px'}}>Date Joined: {date}, {year}</h4>
                     </Col>
                     </div>
                     <div style={{width: "50%", textAlign: 'center', marginRight: '0px'}}>

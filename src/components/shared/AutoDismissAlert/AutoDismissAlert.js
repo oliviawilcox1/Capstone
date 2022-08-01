@@ -1,8 +1,8 @@
 import React from 'react'
 import Alert from 'react-bootstrap/Alert'
-
 import './AutoDismissAlert.scss'
 
+// Auto Dismiss Alert Component Class Defined 
 class AutoDismissAlert extends React.Component {
 	constructor(props) {
 		super(props)
@@ -12,14 +12,17 @@ class AutoDismissAlert extends React.Component {
 		this.timeoutId = null
 	}
 
+	// Message Alert Displayed with handle close function displayed - and timeoutId returned 
 	componentDidMount() {
 		this.timeoutId = setTimeout(this.handleClose, 5000)
 	}
 
+	// clear timeout with Id
 	componentWillUnmount() {
 		clearTimeout(this.timeoutId)
 	}
 
+	// hides alert 
 	handleClose = () => this.setState({ show: false })
 
 	render() {

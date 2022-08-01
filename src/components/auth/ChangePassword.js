@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const ChangePassword = (props) => {
+    // For reference before Hooks - with classes
 	// constructor(props) {
 	// 	super(props)
 
@@ -16,21 +17,21 @@ const ChangePassword = (props) => {
 	// 		newPassword: '',
 	// 	}
 	// }
+
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
-
     const navigate = useNavigate()
 
+    // Change Password Function to be called on Form Submission 
 	const onChangePassword = (event) => {
 		event.preventDefault()
-
+        // prevents event default 
 		const { msgAlert, user } = props
-        console.log('the user', user)
-        
-
         const passwords = {oldPassword, newPassword}
 
+        // call change passwor route with both passwords and user passed in as params
 		changePassword(passwords, user)
+        // then send success message 
 			.then(() =>
 				msgAlert({
 					heading: 'Change Password Success',
@@ -39,6 +40,7 @@ const ChangePassword = (props) => {
 				})
 			)
 			.then(() => navigate('/'))
+            // if not successful, send error message 
 			.catch((error) => {
 				setOldPassword('')
                 setNewPassword('')

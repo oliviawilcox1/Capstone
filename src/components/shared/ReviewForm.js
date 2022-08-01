@@ -5,13 +5,14 @@ import { useParams } from 'react-router-dom'
 
 
 const ReviewForm = (props) => {
+    // props received from create or edit review 
     const { user, id, review, handleChange, handleSubmit, heading } = props
 
     return (
-        <Container styler={{ margin: 'auto'}}>
+        <Container style={{ margin: 'auto'}}>
        
         <h1>{heading}</h1>
-       
+       {/* Submit Form  on clicking button */}
         <Form onSubmit={handleSubmit}>
             <Form.Label>Rating: </Form.Label>
             <Form.Control 

@@ -9,49 +9,48 @@ const CreateReview = (props) => {
     const [updated, setUpdated] = useState(false);
     const { id } = useParams()
     const navigate = useNavigate();
-    // console.log("ID", id)
 
+    // Handle Change Function to store data user is typing 
     const handleChange = (e) => {
-
         e.persist()
-
+        // First Add User 
         addUser()
-
+        // Then update state and set new review from previous reviews
         setReview(prevReview => {
-
+            // add review to correct target name and value
             const name = e.target.name
             let value = e.target.value
-
+            // If the type is a number, turn string to number
             if(e.target.type === 'number') 
             {
                 value = parseInt(e.target.value)
             }
-
+            // Update the review with correct values
             const update = { [name]: value }
-            // console.log(update)
             return {...prevReview, ...update}
         })  
     }
-    
-    console.log(review)
 
+    // Add User Function  to add owner and user id to the review 
     const addUser = () => {
-
         setReview(prevReview => {
             const update = {'owner': user._id}
             return {...prevReview, ...update}
         })
     }
 
+    // Handle Submit function for when review form is submitted
     const handleSubmit = (e) => {
         e.preventDefault ()
-        // console.log('This is the Review',review)
+        // Create Review Route called and params passed in
         createReview(user, id, review)
             .then(() => {
+                // change state and update is now true
                 setUpdated(prev => !prev)
+                // then navigate to show page of restaurant 
                 navigate(`/restaurants/${id}`); 
             })
-
+            // if error send message alert
             .catch(() => 
                 msgAlert({
                     heading: 'Oh No!',
@@ -61,6 +60,7 @@ const CreateReview = (props) => {
     }
 
     return (
+        // pass props down and functions to review form component
         <ReviewForm
             review={review}
             id={id}
