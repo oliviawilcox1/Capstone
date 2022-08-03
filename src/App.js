@@ -14,6 +14,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import ShowRestaurant from './components/restaurants/ShowRestaurant'
 import CreateReview from './components/reviews/CreateReview'
 import ShowProfile from './components/user/ShowProfile'
+import CreateRestaurant from './components/restaurants/CreateRestaurant'
 import { Link } from 'react-router-dom'
 
 const App = () => {
@@ -111,6 +112,13 @@ const App = () => {
 							</RequireAuth>
 						}
 					/>
+					{/* Route for Creating A Restaurant */}
+					{/* <Route 
+						path='/restaurant/create'
+						element={
+								<CreateRestaurant msgAlert={msgAlert} user={user}/>
+						}
+					/> */}
 					</Routes>
 					{/* Map across Message alerts to pass to auto dismiss alert which mounts and unmounts the alert */}
 					{msgAlerts.map((msgAlert) => (

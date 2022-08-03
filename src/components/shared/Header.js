@@ -33,6 +33,11 @@ const authenticatedOptions = (
 // Not Signed In 
 const unauthenticatedOptions = (
 	<>
+		<Nav.Link>
+		    <Link to='create' style={linkStyle}>
+				For Businesses
+			</Link>
+        </Nav.Link>
         <Nav.Link >
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Link>

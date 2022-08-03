@@ -10,6 +10,17 @@ export const getAllRestaurants = () => {
     return axios(`${apiUrl}/restaurants`)
 }
 
+// *********** Get Route for Total Restaurants **************
+export const getRestaurantSum = () => {
+  return axios(`${apiUrl}/restaurants/sum`)
+}
+
+// *********** Get Route for Restaurants Sorted in Descending Order by Review **************
+export const getRestaurantFilter = () => {
+  return axios(`${apiUrl}/restaurants/filter`)
+}
+
+
 // *********** Show Route for Restaurants **************
 export const getOneRestaurant = (restaurantId) => {
     return axios(`${apiUrl}/restaurants/${restaurantId}`)

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import ScrollToTop from 'react-scroll-to-top'
-import { getAllRestaurants } from '../../api/restaurants'
+import { getAllRestaurants, getRestaurantSum } from '../../api/restaurants'
 import {Link, useNavigate } from 'react-router-dom'
 import { Carousel } from 'react-bootstrap'
 
@@ -8,7 +8,7 @@ const style = {
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    margin: '20px'
+    margin: '30px'
 }
 
 const style2 = {
@@ -19,6 +19,7 @@ const style2 = {
 
 const IndexRestaurants = (props) => {
     const [restaurants, setRestaurants] = useState(null)
+    const [restauranttotal, setRestaurantTotal] = useState(null)
     const {msgAlert, user } = props
 
     // Mount Component with UseEffect Hook 
@@ -28,6 +29,15 @@ const IndexRestaurants = (props) => {
             .then(res => {
                 // Update State and set restaurants as the res.data.restaurants
                 setRestaurants(res.data.restaurants)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        getRestaurantSum()
+            .then(res => {
+                // Update State and set restaurants as the res.data.restaurants
+                console.log("data", res.data)
+                setRestaurantTotal(res.data.sum)
             })
             .catch(err => {
                 console.log(err)
@@ -59,6 +69,7 @@ const IndexRestaurants = (props) => {
         })
     }
 
+    console.log(restauranttotal)
     // Assign Highlights to be shown
     let highlights
     if (restaurants.length > 0) 
@@ -138,17 +149,20 @@ const IndexRestaurants = (props) => {
 
 return (
     <>
-    <div class='form'style={style}>
+    <div className ='form'style={style}>
         <h1> Certified Fresh Restaurants of the Week </h1>
         <h3 style={{textAlign: 'center'}}> Top Three Places To Try This Week </h3>
         {/* Highlighs Here */}
-            <div class ='form3' style={style}>
+            <div className='form3' style={style}>
                 {highlights}
             </div>
-        <h1>All Restaurants in NYC</h1><br/>
-  
-        <div class="scrollbar bordered-black square thin">
-            <div class="force-overflow" style={style}>
+            <div className='index'>
+                <h1>All Restaurants in NYC</h1><br/>
+                <span> Total Restaurants: {restauranttotal}</span>
+             </div> <br/>
+       <button> Sort By Highest Rating</button>
+        <div className="scrollbar bordered-black square thin">
+            <div className="force-overflow" style={style}>
                 <ScrollToTop style={style2}/>
                 {/* All restaurants */}
                 {restaurantCards}
