@@ -71,9 +71,16 @@ const App = () => {
 							<SignIn msgAlert={msgAlert} setUser={setUser} 
 						/>}
 					/>
+					{/* Route for Creating A Restaurant */}
+					<Route 
+						path='/create'
+						element={
+								<CreateRestaurant msgAlert={msgAlert} user={user}/>
+						}
+					/>
 					{/* Show Restaurant Component */}
 					<Route 
-						path="restaurants/:id"
+						path="/restaurants/:id"
 						element={
 							<ShowRestaurant user ={user} 
 						/>}
@@ -112,13 +119,6 @@ const App = () => {
 							</RequireAuth>
 						}
 					/>
-					{/* Route for Creating A Restaurant */}
-					{/* <Route 
-						path='/restaurant/create'
-						element={
-								<CreateRestaurant msgAlert={msgAlert} user={user}/>
-						}
-					/> */}
 					</Routes>
 					{/* Map across Message alerts to pass to auto dismiss alert which mounts and unmounts the alert */}
 					{msgAlerts.map((msgAlert) => (
