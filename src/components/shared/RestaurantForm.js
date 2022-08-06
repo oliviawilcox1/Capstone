@@ -28,6 +28,14 @@ const RestaurantForm = (props) => {
             />
             <button type='submit'>Submit</button>  
         </Form> */}
+        <Form>
+            <Form.Label> Name </Form.Label>
+            <Form.Control 
+                    placeholder="Your Restaurant Name"
+                    value={restaurant.name}
+                    name='Name'
+            />
+        </Form>
         </Container>
     )
 }
