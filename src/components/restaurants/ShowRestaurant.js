@@ -149,6 +149,7 @@ const ShowRestaurant = (props) => {
                         {restaurant.visitors} visitors  <br/>
                         {restaurant.cuisine} <br/>
                         {(restaurant.rating).toFixed(1)} <br/>
+                        Hours: 
                     </p>
                 </div>
                 <div class='form2' style={{ width: '50%', margin: 'auto', fontSize: '40px'}}>

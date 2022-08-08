@@ -3,7 +3,6 @@ import ScrollToTop from 'react-scroll-to-top'
 import { getAllRestaurants, getRestaurantSum, getRestaurantFilter } from '../../api/restaurants'
 import {Link, useNavigate } from 'react-router-dom'
 import { Carousel } from 'react-bootstrap'
-// import ShowSorted from "./Sorted"
 
 const style = {
     display: 'flex',
