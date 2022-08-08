@@ -4,37 +4,46 @@ import { useParams } from 'react-router-dom'
 
 const RestaurantForm = (props) => {
     // props received from create or edit review 
-    const { user, id, restaurant, heading } = props
+    const { user, id, heading } = props
+
 
     return (
         <Container style={{ margin: 'auto'}}>
-       
         <h1>{heading}</h1>
        {/* Submit Form  on clicking button */}
-        {/* <Form >
-            <Form.Label></Form.Label>
+        <Form >
+            <Form.Label> Name: </Form.Label>
             <Form.Control 
-                    placeholder="Pick from 1 through 5"
-                    value={review.rating}
-                    name='rating'
-            
-            />
-            <Form.Label >Description: </Form.Label>
-            <Form.Control
-                placeholder="This was the most delicious meal I've had in ages! I am dreaming of coming back."
-                value={review.review}
-                name='review'
-            
-            />
-            <button type='submit'>Submit</button>  
-        </Form> */}
-        <Form>
-            <Form.Label> Name </Form.Label>
-            <Form.Control 
-                    placeholder="Your Restaurant Name"
-                    value={restaurant.name}
+                    placeholder="Restaurant Name"
+                    // value={restaurant.name}
                     name='Name'
             />
+            <Form.Label> Image: </Form.Label>
+            <Form.Control
+                placeholder="Image Link"
+                name='review'
+            />
+            <Form.Label> Description: </Form.Label>
+            <Form.Control
+                placeholder="Restaurant Description"
+                name='review'
+            /> 
+            <Form.Label> Cuisine: </Form.Label>
+            <Form.Control
+                placeholder="Restaurant Cuisine"
+                name='review'
+            /> 
+            <Form.Label> Address: </Form.Label>
+            <Form.Control
+                placeholder="Restaurant Address"
+                name='review'
+            /> 
+            <Form.Label> Number: </Form.Label>
+            <Form.Control
+                placeholder="Restaurant Number"
+                name='review'
+            />
+            <button type='submit'>Submit</button>  
         </Form>
         </Container>
     )

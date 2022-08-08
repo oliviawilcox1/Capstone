@@ -9,12 +9,11 @@ const CreateRestaurant = (props) => {
     return (
         // pass props down and functions to review form component
         <RestaurantForm
-            restaurant={restaurant}
             id={id}
             user={user}
             // handleChange={handleChange}
             // handleSubmit={handleSubmit}
-            heading="Write Your Review"
+            heading="Submit Your Restaurant Info For Review"
         />
         // <>
         // <h1>Need to create a post for your website?</h1>
