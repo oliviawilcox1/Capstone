@@ -12,6 +12,11 @@ const RestaurantForm = (props) => {
         <h1>{heading}</h1>
        {/* Submit Form  on clicking button */}
         <Form >
+            <Form.Label> Email: </Form.Label>
+            <Form.Control
+                placeholder="Your Business Email"
+                name='review'
+            />
             <Form.Label> Name: </Form.Label>
             <Form.Control 
                     placeholder="Restaurant Name"
