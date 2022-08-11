@@ -85,7 +85,6 @@ const IndexRestaurants = (props) => {
         if(restaurants[i].name === "Spicy Moon" ){
             highlight1 = <div style ={{display: 'flex', justifyContent: 'center', alignItems: "center", flexDirection:'row', flexWrap: 'wrap', margin:'10px', height:'500px', width: '650px'}}>
            <Carousel fade variant="dark" >
-            {console.log(restaurants[i])}
             <Carousel.Item>
                 <img
                 className="d-block w-100"
